@@ -1,0 +1,323 @@
+/**************************************/
+/* General */
+/**************************************/
+
+ /* necessary for the background/main image of the index page to take up the full screen, regardless of screen size*/
+body, html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+/* .page-divider gives the pager divider (aka the "-----" and "-----" next to the title of a section)*/
+.page-divider {
+  overflow: hidden;
+  text-align: center;
+}
+
+.page-divider:before,
+.page-divider:after {
+  /*background-color: #000;*/
+  background-color: #383838;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  /*width: 8%;*/
+  width: 6%;
+}
+
+.page-divider:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.page-divider:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+  /* adds boldness/thickness to the page divider line */
+.page-divider.strong:before,
+.page-divider.strong:after {
+    height: 2px;
+}
+
+ /* makes the columns in a row with the class "eql-hgt" have equal heights. To be used to vertically center a column's text
+ to match the height of the image of the adjacent column*/
+.eql-hgt {
+    overflow: hidden; 
+}
+.eql-hgt > [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+ /* vertically center a text in a column or inside whatever container or div */
+.v-center {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+/**************************************/
+/* INDEX PAGE */
+/**************************************/
+
+ /* makes the background image / main image inherit the height of the browser (body/html) and cuts off all excess pixels of the 
+ image*/
+#intro_photo {
+    height: inherit;
+    overflow: hidden;
+}
+
+ /* the background image / main image of the index page */
+.background {
+    background: url("../images/California_beach.jpg");
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    height: 100%;
+    text-align: center;
+}
+
+ /* makes the transparent, darker layer above the picture (for better overlay word legibility) */
+.layer {
+    background-color: rgba(20,30,10,0.2);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-text {
+    position: relative;
+    color: white;
+    top: 35%;
+    font-size: calc(15px + 6.2vw);
+}
+
+ /* makes the subtitle (smaller font just below the "Hello!" introduction title) */
+.intro-subtitle {
+    position: relative;
+    color: white;
+    top: 32%;
+    font-size: calc(12px + 1.5vw);
+}
+
+ /* selects each of the index page's sections (after the main picture) */
+.intro-section {
+    text-align: center;
+    padding: 4em 0;
+}
+
+ /* selects the picture in the "About Me" section. */
+.about-pic {
+    /* makes the picture circular */
+    border-radius: 50%;
+    /* sets image dimension */
+    width: 17em;
+    height: 17em;
+    /*width: 15em;*/
+    /*height: 15em;*/
+}
+
+ /* selects the thumbnail picture of the "About Me" section */
+.about-pic.thumbnail {
+    /* sets the background color of the picture's frame/border */
+    background-color: #97c3c4;
+    /*background-color: #99a1c9;*/
+}
+
+ /* centers image (duh) */
+.center-image {
+    /*display: block;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 50%;*/
+}
+
+ /* Gives top and bottom margin/space to the sections of the index page, after the landing/main picture */
+.vert-spaced {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+ /* Gives more top and bottom margin/space to the sections of the index page, after the landing/main picture */
+.vert-spaced-2 {
+    margin-top: calc(15px + 1.5vw);
+    margin-bottom: calc(15px + 1.5vw);
+}
+
+ /* style of the text in the "About Me" section */
+.about-text {
+    text-align: left;
+    position: relative;
+    /*top: 30%;*/
+    /* the line height "centers" the text vertically and also makes the text easier to see */
+    line-height: 40px;
+}
+
+.my-bg-pic {
+    /* makes the picture circular */
+    border-radius: 20%;
+    /* sets image dimension */
+    width: 22em;
+    height: 18em;
+    /*max-width: 22em;*/
+    /*max-height: 18em;*/
+    /*min-width: 10em;*/
+    /*min-height: 7em;*/
+}
+
+.my-bg-text {
+    text-align: left;
+    position: relative;
+}
+
+.my-bg-title {
+    line-height: 1.3em;
+}
+
+
+/**************************************/
+/* RESUME PAGE */
+/**************************************/
+
+ /* makes the resume pdf file take up the whole page, and the page's scroll up/down becomes the pdf scroll up/down. Neat! */
+.resume-div{
+    /*opacity:0.8;*/
+    /*background-color:#ccc;*/
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
+
+.resume {
+    width: 100%;
+    height: 100%;
+}
+
+
+/**************************************/
+/* ABOUT PAGE */
+/**************************************/
+#about-intro-photo {
+    width: 100%;
+    height: 500px;
+}
+
+.about-background {
+    /*background: url("../images/Santa_Barbara.jpg");*/
+    /*background: url("../images/thinking.jpg");*/
+    background: url("../images/thinking.jpg");
+    /*background: url("../images/MP_Cropped.jpg");*/
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */
+    width: 100%;
+    height: 100%;
+    /*height: 642px;*/
+    text-align: center;
+    /* removes weird margins added by having "padded" grid */
+    /*margin-right: -15px;*/
+    /*margin-left: -15px;*/
+}
+
+.about-intro-text {
+    position: relative;
+    color: white;
+    top: 35%;
+    font-size: calc(15px + 6vw);
+    line-height: 1em;
+}
+
+/**************************************/
+/* PORTFOLIO PAGE */
+/**************************************/
+
+ /* makes it so that the bootstrap columns move onto a new row if the 12 column spaces have been filled, or if the inclusion
+ of the new column will exceed that 12 column space. Also used outside of the portfolio page (in the index page, "My background"
+ sections, for example). */
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+.small {
+    font-size: 18px;
+    color: #7c7c7c;
+}
+
+/**************************************/
+/* CONTACT PAGE */
+/**************************************/
+.contact-jumbo {
+/*background: #358CCE;*/
+background: #528dea;
+color: #FFF;
+border-radius: 0px;
+}
+.jumbotron-sm { padding-top: 24px;
+padding-bottom: 24px; }
+.jumbotron small {
+color: #FFF;
+}
+.p small {
+font-size: 23px;
+}
+.contact-jumbo-text-div {
+    padding-left: 140px;
+}
+
+/**************************************/
+/* NAV BAR */
+/**************************************/
+
+/* main navbar background color and border color */
+.navbar-inverse {
+    background-color: #72a4c9;
+    /* the below code renders the navbar transparent... may be useful later... */
+    /* maybe i can use JS to add a class to the navbar to make it transparent until we scroll past a certain point,
+    after which the navbar will become "sticky" and stick to the top of the page */
+    /*background: transparent;*/ 
+    border-color: #5982a0;
+}
+
+ /* collapsed (hamburger) navbar border-color */
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #5982a0;
+}
+
+/* main navbar font color */
+.navbar-inverse .navbar-brand {
+    color: #e4e4e4;
+    font-size: 20px;
+    padding-top: 11px;
+    padding-bottom: 0px;
+}
+
+/* main navbar brand font color */
+.navbar-inverse .navbar-nav>li>a {
+    color: #e4e4e4;
+    font-size: 18px;
+}
+
+/* main navbar collapse (hamburger) icon border-color */
+.navbar-inverse .navbar-toggle {
+    border-color: #72a4c9;
+}
+
+/* main navbar collapse (hamburger) background-color on hover */
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #83b3d6;
+}
+
+/* makes the navbar icons bigger, but also creates some unneccessary padding to top and bottom */
+/*.navbar-icon {*/
+/*    font-size: 25px;*/
+/*}*/
