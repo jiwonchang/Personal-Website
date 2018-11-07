@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;">Create A New Blog Post</h1>
+        
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/blog" method="POST">
+                <!-- the form-group class divs add spacing between the items in the form -->
+                <div class="form-group">
+                    <input class="form-control" name="blog[title]" type="text" placeholder="Title of New Post" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="blog[image]" type="text" placeholder="image url" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="blog[body]" placeholder="Write something interesting here" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
+                </div>
+            </form>
+            
+            <a href="/blog">Go Back</a>
+        </div>
+        
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

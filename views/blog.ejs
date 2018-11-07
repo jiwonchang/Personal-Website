@@ -1,14 +1,32 @@
 <% include ./partials/header %>
 
 <div id="about-intro-photo" class="sixteen wide column">
-    <div class="about-background" style="text-align: center; overflow: hidden">
+    <div class="blog-background" style="text-align: center; overflow: hidden">
         <div class="layer">
-            <div class="about-intro-text">Dreamscape</div>
+            <div class="about-intro-text">Blog</div>
         </div>
     </div>
 </div>
 
-<div class="container">
+<!-- will need to put all the blog post data into a database; will also need to have a way to easily create blog posts -->
+<div class="container" style="padding: 4em 0">
+    
+    <div class="row flex">
+        <% blogs.forEach(function(blog) { %>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+    			<div class="thumbnail" style="border:none">
+    				<!--<img class="thumb-img" src="/images/enigma.jpg">-->
+    				<img class="thumb-img" src="<%= blog.image %>">
+    				<div class="caption">
+    				    <p>November 6, 2018</p>
+    				    <h3 style="margin-top: 0"><%= blog.title %></h3>
+                        <p><%- blog.body.substring(0, 100) + "..." %></p>
+                        <a type="button" class="btn btn-success" href="/blog/<%= blog._id %>">Read More</a>
+    				</div>
+    			</div>
+    		</div>
+    	<% }); %>
+	</div>
     
 </div>
 

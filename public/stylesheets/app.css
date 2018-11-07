@@ -254,8 +254,37 @@ body, html {
 }
 
 /**************************************/
+/* Blog PAGE */
+/**************************************/
+
+.blog-background {
+    /*background: url("../images/Santa_Barbara_Cropped.jpg");*/
+    /*background: url("../images/thinking.jpg");*/
+    background: url("../images/MP_Cropped.jpg");
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */
+    width: 100%;
+    height: 100%;
+    /*height: 642px;*/
+    text-align: center;
+}
+
+/*.blog-img-crop {*/
+/*    width: 200px;*/
+/*    height: 150px;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.blog-img {*/
+/*    width: 400px;*/
+/*    height: 150px;*/
+/*}*/
+
+/**************************************/
 /* CONTACT PAGE */
 /**************************************/
+
 .contact-jumbo {
 /*background: #358CCE;*/
 background: #528dea;
