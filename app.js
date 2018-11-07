@@ -73,6 +73,38 @@ app.get("/blog/:id", function(req, res) {
         }
     });
 });
+ // EDIT blog route
+app.get("/blog/:id/edit", function(req, res) {
+    Blog.findById(req.params.id, function(err, foundBlog) {
+        if (err) {
+            res.redirect("back");
+            console.log(err);
+        } else {
+            res.render("blogs/edit", {blog: foundBlog});
+        }
+    });
+});
+ // UPDATE blog route
+app.put("/blog/:id", function(req, res) {
+    var updatedBlog = req.body.blog;
+    Blog.findByIdAndUpdate(req.params.id, updatedBlog, function(err, editedBlog) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.redirect("/blog/" + req.params.id);
+        }
+    });
+});
+
+app.delete("/blog/:id", function(req, res) {
+    Blog.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.redirect("/blog");
+        }
+    })
+})
 
 // contact me routes ************************
 app.get("/contact", function(req, res) {

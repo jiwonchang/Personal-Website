@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;">Edit <%= blog.name %></h1>
+        
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
+                <!-- the form-group class divs add spacing between the items in the form -->
+                <div class="form-group">
+                    <input class="form-control" name="blog[title]" type="text" value="<%= blog.title %>" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="blog[image]" type="text" value="<%= blog.image %>" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="blog[body]" type="text" value="<%= blog.body %>" required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
+                </div>
+            </form>
+            
+            <a href="/blog/<%= blog._id %>">Go Back</a>
+        </div>
+        
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

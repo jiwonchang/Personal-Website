@@ -16,10 +16,10 @@
             <div class="col-lg-4 col-sm-6 col-xs-12">
     			<div class="thumbnail" style="border:none">
     				<!--<img class="thumb-img" src="/images/enigma.jpg">-->
-    				<img class="thumb-img" src="<%= blog.image %>">
+    				<a href="/blog/<%= blog._id %>"><img class="blog-img" src="<%= blog.image %>"></a>
     				<div class="caption">
-    				    <p>November 6, 2018</p>
-    				    <h3 style="margin-top: 0"><%= blog.title %></h3>
+    				    <p><span><%= blog.created.toDateString() %></span></p>
+    				    <a href="/blog/<%= blog._id %>"><h3 style="margin-top: 0"><%= blog.title %></h3></a>
                         <p><%- blog.body.substring(0, 100) + "..." %></p>
                         <a type="button" class="btn btn-success" href="/blog/<%= blog._id %>">Read More</a>
     				</div>
