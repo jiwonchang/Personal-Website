@@ -12,66 +12,83 @@
     <hr>
     
     <div class="row flex">
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-			<div class="thumbnail">
-				<img class="thumb-img" src="/images/enigma.jpg">
-				<div class="caption">
-				    <h4>Virtual Enigma Machine</h4>
-                    <p>Using Java, created the historical enigma machine from WWII...</p>
-                    <a type="button" class="btn btn-success">Read More</a>
+    	<% portfolios.forEach(function(portfolio) { %>
+    		<% if (portfolio.type === "Work") { %>
+		        <div class="col-lg-4 col-sm-6 col-xs-12">
+					<div class="thumbnail">
+						<img class="thumb-img" src="<%= portfolio.image %>">
+						<div class="caption">
+						    <h4><%= portfolio.title %></h4>
+						    <p><%= portfolio.created.toDateString() %></p>
+		                    <p><%- portfolio.body.substring(0, 100) + "..." %></p>
+		                    <a type="button" class="btn btn-success" href="/portfolio/<%= portfolio._id %>">Read More</a>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 col-xs-12">
-			<div class="thumbnail">
-				<img src="/images/horse-race-cropped.jpg">
-				<div class="caption">
-				    <h4>Horse Race Project</h4>
-                    <p>Provided a set of rules, employed polished algorithms to make the best horse team...</p>
-                    <a type="button" class="btn btn-success">Read More</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 col-xs-12">
-			<div class="thumbnail">
-				<img src="/images/horse-race-cropped.jpg">
-				<div class="caption">
-				    <h4>Infinitum - A Sh'mup Game!</h4>
-                    <p>With Pygame, created and expanded upon the basic Shoot 'Em Up game with my own features...</p>
-                    <a type="button" class="btn btn-success">Read More</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 col-xs-12">
-			<div class="thumbnail">
-				<img src="/images/horse-race-cropped.jpg">
-				<div class="caption">
-				    <h4>Goomblog</h4>
-                    <p>While learning web dev, created a blog app that also changes its color theme based on time...</p>
-                    <a type="button" class="btn btn-success">Read More</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 col-xs-12">
-			<div class="thumbnail">
-				<img src="/images/horse-race-cropped.jpg">
-				<div class="caption">
-				    <h4>To-Do List Web App</h4>
-                    <p>While learning web dev, created a simple web app that hosts a to-do list for the user to edit...</p>
-                    <a type="button" class="btn btn-success">Read More</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 col-xs-12">
-			<div class="thumbnail">
-				<img src="/images/horse-race-cropped.jpg">
-				<div class="caption">
-				    <h4>Infinitum - A Sh'mup Game!</h4>
-                    <p>With Pygame, created and expanded upon the basic Shoot 'Em Up game with my own features...</p>
-                    <a type="button" class="btn btn-success">Read More</a>
-				</div>
-			</div>
-		</div>
+			<% } %>
+		<% }); %>
+		
+		
+		<!--<div class="col-lg-4 col-sm-6 col-xs-12">-->
+		<!--	<div class="thumbnail">-->
+		<!--		<img class="thumb-img" src="/images/enigma.jpg">-->
+		<!--		<div class="caption">-->
+		<!--		    <h4>Virtual Enigma Machine</h4>-->
+  <!--                  <p>Using Java, created the historical enigma machine from WWII...</p>-->
+  <!--                  <a type="button" class="btn btn-success">Read More</a>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
+		<!--<div class="col-lg-4 col-sm-6 col-xs-12">-->
+		<!--	<div class="thumbnail">-->
+		<!--		<img src="/images/horse-race-cropped.jpg">-->
+		<!--		<div class="caption">-->
+		<!--		    <h4>Horse Race Project</h4>-->
+  <!--                  <p>Provided a set of rules, employed polished algorithms to make the best horse team...</p>-->
+  <!--                  <a type="button" class="btn btn-success">Read More</a>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
+		<!--<div class="col-lg-4 col-sm-6 col-xs-12">-->
+		<!--	<div class="thumbnail">-->
+		<!--		<img src="/images/horse-race-cropped.jpg">-->
+		<!--		<div class="caption">-->
+		<!--		    <h4>Infinitum - A Sh'mup Game!</h4>-->
+  <!--                  <p>With Pygame, created and expanded upon the basic Shoot 'Em Up game with my own features...</p>-->
+  <!--                  <a type="button" class="btn btn-success">Read More</a>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
+		<!--<div class="col-lg-4 col-sm-6 col-xs-12">-->
+		<!--	<div class="thumbnail">-->
+		<!--		<img src="/images/horse-race-cropped.jpg">-->
+		<!--		<div class="caption">-->
+		<!--		    <h4>Goomblog</h4>-->
+  <!--                  <p>While learning web dev, created a blog app that also changes its color theme based on time...</p>-->
+  <!--                  <a type="button" class="btn btn-success">Read More</a>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
+		<!--<div class="col-lg-4 col-sm-6 col-xs-12">-->
+		<!--	<div class="thumbnail">-->
+		<!--		<img src="/images/horse-race-cropped.jpg">-->
+		<!--		<div class="caption">-->
+		<!--		    <h4>To-Do List Web App</h4>-->
+  <!--                  <p>While learning web dev, created a simple web app that hosts a to-do list for the user to edit...</p>-->
+  <!--                  <a type="button" class="btn btn-success">Read More</a>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
+		<!--<div class="col-lg-4 col-sm-6 col-xs-12">-->
+		<!--	<div class="thumbnail">-->
+		<!--		<img src="/images/horse-race-cropped.jpg">-->
+		<!--		<div class="caption">-->
+		<!--		    <h4>Infinitum - A Sh'mup Game!</h4>-->
+  <!--                  <p>With Pygame, created and expanded upon the basic Shoot 'Em Up game with my own features...</p>-->
+  <!--                  <a type="button" class="btn btn-success">Read More</a>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
     </div>
     
     <hr>
@@ -80,6 +97,18 @@
     <p class="small">"Art is the highest form of human expression"</p>
     
     <hr>
+    
+    <div class="row flex">
+    	<% portfolios.forEach(function(portfolio) { %>
+    		<% if (portfolio.type === "Art") { %>
+		        <div class="col-lg-4 col-sm-6 col-xs-12">
+					<div class="thumbnail">
+						<img class="thumb-img" src="<%= portfolio.image %>">
+					</div>
+				</div>
+			<% } %>
+		<% }); %>
+	</div>
     
     
     

@@ -7,6 +7,7 @@ var methodOverride   = require("method-override"),
     
 // require models from modules
 var Blog = require("./models/blogs");
+var Portfolio = require("./models/portfolios");
     
 // general set-up
 app.set("view engine", "ejs");    
@@ -32,8 +33,80 @@ app.get("/resume", function(req, res) {
 });
 
 // portfolio routes *************************
+ // INDEX portfolio routes
 app.get("/portfolio", function(req, res) {
-    res.render("portfolio");
+    Portfolio.find({}, function(err, allPortfolios) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            // the .reverse() reverses the array we get from the database; this conveniently works for us since the newest
+            // addition to the database will be toward the end of the array; so reversing it makes it so that the array goes
+            // newest -> oldest rather than oldest -> newest.
+            // but maybe instead of sorting the collection here, we can sort it every once in a while in our CREATE route
+            // res.render("blog", {blogs: allBlogs});
+            res.render("portfolio", {portfolios: allPortfolios.reverse()});
+        }
+    });
+});
+ // NEW portfolio route
+app.get("/portfolio/new", function(req, res) {
+    res.render("portfolios/new");
+});
+ // CREATE portfolio route
+app.post("/portfolio", function(req, res) {
+    var newPortfolio = req.body.portfolio;
+    Portfolio.create(newPortfolio, function(err, newlyCreated) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            // the .sort({date: -1}) sorts the collection in MongoDB in chronological order (newest -> oldest)
+            // Blog.find().sort({date: -1});
+            res.redirect("/portfolio");
+        }
+    });
+});
+ // SHOW portfolio route
+app.get("/portfolio/:id", function(req, res) {
+    Portfolio.findById(req.params.id, function(err, foundPortfolio) {
+        if (err) {
+            res.redirect("/portfolio");
+            console.log(err);
+        } else {
+            res.render("portfolios/show", {portfolio: foundPortfolio});
+        }
+    });
+});
+ // EDIT portfolio route
+app.get("/portfolio/:id/edit", function(req, res) {
+    Portfolio.findById(req.params.id, function(err, foundPortfolio) {
+        if (err) {
+            res.redirect("back");
+            console.log(err);
+        } else {
+            res.render("portfolios/edit", {portfolio: foundPortfolio});
+        }
+    });
+});
+ // UPDATE portfolio route
+app.put("/portfolio/:id", function(req, res) {
+    var updatedPortfolio = req.body.portfolio;
+    Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio, function(err, editedPortfolio) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.redirect("/portfolio/" + req.params.id);
+        }
+    });
+});
+// Delete portfolio route
+app.delete("/portfolio/:id", function(req, res) {
+    Portfolio.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.redirect("/portfolio");
+        }
+    });
 });
 
 // blog routes ******************************
@@ -43,7 +116,12 @@ app.get("/blog", function(req, res) {
         if (err) {
             res.redirect("back");
         } else {
-            res.render("blog", {blogs: allBlogs});
+            // the .reverse() reverses the array we get from the database; this conveniently works for us since the newest
+            // addition to the database will be toward the end of the array; so reversing it makes it so that the array goes
+            // newest -> oldest rather than oldest -> newest.
+            // but maybe instead of sorting the collection here, we can sort it every once in a while in our CREATE route
+            // res.render("blog", {blogs: allBlogs});
+            res.render("blog", {blogs: allBlogs.reverse()});
         }
     });
 });
@@ -58,6 +136,8 @@ app.post("/blog", function(req, res) {
         if (err) {
             res.redirect("back");
         } else {
+            // the .sort({date: -1}) sorts the collection in MongoDB in chronological order (newest -> oldest)
+            // Blog.find().sort({date: -1});
             res.redirect("/blog");
         }
     });
@@ -80,7 +160,7 @@ app.get("/blog/:id/edit", function(req, res) {
             res.redirect("back");
             console.log(err);
         } else {
-            res.render("blogs/edit", {blog: foundBlog});
+            res.render("blogs/" + req.params.id + "edit", {blog: foundBlog});
         }
     });
 });

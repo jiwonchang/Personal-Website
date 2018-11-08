@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;"><%= portfolio.title %></h1>
+        
+        <div style="width: 60%; margin: 25px auto;">
+            <img class="portfolio-show-img" src="<%= portfolio.image %>">
+            <p><%= portfolio.body %></p>
+            <a class="btn btn-warning" href="/portfolio/<%= portfolio._id %>/edit">Edit</a>
+            <!-- triggers the DESTROY Route by sending a DELETE request to "/portfolios/id". -->
+            <!-- Again, we use method-override since HTML does not support DELETE requests by default -->
+            <form id="delete" action="/portfolio/<%= portfolio._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>
