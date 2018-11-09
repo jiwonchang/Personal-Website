@@ -160,7 +160,7 @@ app.get("/blog/:id/edit", function(req, res) {
             res.redirect("back");
             console.log(err);
         } else {
-            res.render("blogs/" + req.params.id + "edit", {blog: foundBlog});
+            res.render("blogs/edit", {blog: foundBlog});
         }
     });
 });
