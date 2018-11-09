@@ -277,6 +277,26 @@ body, html {
   vertical-align: middle;
 }
  /* code centering the modal ends*/
+ 
+ /* sets maximum modal image width/height according to the screen size */
+.modal-dialog {
+    /*width: 90%;*/
+    width: auto;
+    height: 90%;
+}
+
+.imagepreview {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.modal button.close {
+    /*padding-left: 20px;*/
+    color: white;
+}
+ /* code that sets modal image dimensions according to screen width ends */
 
 /**************************************/
 /* Blog PAGE */
