@@ -76,6 +76,7 @@ body, html {
  /* the background image / main image of the index page */
 .background {
     background: url("../images/California_beach.jpg");
+    /*background: url("../images/Beach_blur1.jpg");*/
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
@@ -281,6 +282,8 @@ body, html {
  /* sets maximum modal image width/height according to the screen size */
 .modal-dialog {
     /*width: 90%;*/
+    /* the width: auto makes it so that the modal-dialog div's width is adjusted to become that of the imagepreview div
+    contained within*/
     width: auto;
     height: 90%;
 }
@@ -334,22 +337,60 @@ body, html {
 /* CONTACT PAGE */
 /**************************************/
 
-.contact-jumbo {
+/*.contact-jumbo {*/
 /*background: #358CCE;*/
-background: #528dea;
-color: #FFF;
-border-radius: 0px;
+/*background: #528dea;*/
+/*color: #FFF;*/
+/*border-radius: 0px;*/
+/*}*/
+/*.jumbotron-sm { padding-top: 24px;*/
+/*padding-bottom: 24px; }*/
+/*.jumbotron small {*/
+/*color: #FFF;*/
+/*}*/
+/*.contact-jumbo-text-div {*/
+/*    padding-left: 140px;*/
+/*}*/
+
+.contact-background {
+    background: url("../images/SB_crop_blur1.jpg");
+    /*-webkit-filter: blur(2px);*/
+    /*filer: blur(2px);*/
+    /*background: url("../images/thinking.jpg");*/
+    /*background: url("../images/MP_Cropped.jpg");*/
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */
+    width: 100%;
+    height: 100%;
+    /*height: 642px;*/
+    /*text-align: center;*/
 }
-.jumbotron-sm { padding-top: 24px;
-padding-bottom: 24px; }
-.jumbotron small {
-color: #FFF;
+
+.contact-intro-text {
+    position: relative;
+    color: white;
+    top: 35%;
+    font-size: calc(15px + 6vw);
+    line-height: 1em;
 }
-.p small {
-font-size: 23px;
+
+.contact-subtitle {
+    position: relative;
+    color: white;
+    top: 32%;
+    font-size: calc(12px + 1.5vw);
+    line-height: 2em;
 }
-.contact-jumbo-text-div {
-    padding-left: 140px;
+
+.contact-text {
+    padding-left: calc(140px);
+}
+
+ /* selects each of the index page's sections (after the main picture) */
+.contact-section {
+    /*text-align: center;*/
+    padding: 4em 0;
 }
 
 /**************************************/
