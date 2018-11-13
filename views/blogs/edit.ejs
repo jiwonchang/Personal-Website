@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container content-beginning">
     <div class="row">
         <h1 style="text-align: center;">Edit <%= blog.name %></h1>
         
@@ -8,10 +8,30 @@
             <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
                 <!-- the form-group class divs add spacing between the items in the form -->
                 <div class="form-group">
+                    <select class="form-control" name="blog[category]" type="text" id="blog-category" required>
+                        <!-- the JS code "(blog.category == 'Thoughts') ? 'selected' : ''" makes it so that if the blog.category
+                        value is the same as that of the given option, the app will add the "selected" class to that <option> tag.
+                        And thus when the edit screen is opened, the category that was previously chosen is already selected.-->
+                        <option value="Thoughts" <%= (blog.category == "Thoughts") ? 'selected' : '' %>>Thoughts</option>
+                        <option value="Opinion" <%= (blog.category == "Opinion") ? 'selected' : '' %>>Opinion</option>
+                        <option value="Life" <%= (blog.category == "Life") ? 'selected' : '' %>>Life</option>
+                        <option value="Lessons" <%= (blog.category == "Lessons") ? 'selected' : '' %>>Lessons</option>
+                        <option value="Advice" <%= (blog.category == "Advice") ? 'selected' : '' %>>Advice</option>
+                        <option value="Food" <%= (blog.category == "Food") ? 'selected' : '' %>>Food</option>
+                        <option value="Tech" <%= (blog.category == "Tech") ? 'selected' : '' %>>Tech</option>
+                        <option value="Art" <%= (blog.category == "Art") ? 'selected' : '' %>>Art</option>
+                        <option value="Sports" <%= (blog.category == "Sports") ? 'selected' : '' %>>Sports</option>
+                        <option value="Random" <%= (blog.category == "Random") ? 'selected' : '' %>>Random</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <input class="form-control" name="blog[title]" type="text" value="<%= blog.title %>" required>
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="blog[image]" type="text" value="<%= blog.image %>" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="blog[video]" type="text" placeholder="video url" value="<%= blog.video %>">
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" name="blog[body]" required><%= blog.body %></textarea>

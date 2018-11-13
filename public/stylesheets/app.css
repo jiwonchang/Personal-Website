@@ -7,7 +7,20 @@ body, html {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    /* removes the awkward slight margin at the right of the page, but setting the .row's margin-right as 0 is a better solution
+    as "overflow-x: hidden" causes the navbar to overlap with the vertical scrollbar */
+    /*overflow-x: hidden; */
+}
+
+ /* removes the awkward slight margin at the right of the page that makes the bottom scrollbar appear (caused by the .row element's
+ property which gives it a margin-right of -15px */
+.row {
+    margin-right: 0;
+}
+
+ /* makes the content hidden under the navbar visible by pushing all content down with padding-top */
+.content-beginning {
+    padding-top: 70px;
 }
 
 /* .page-divider gives the pager divider (aka the "-----" and "-----" next to the title of a section)*/
@@ -178,8 +191,13 @@ body, html {
     position: relative;
 }
 
+.my-bg-subtitle {
+    color: #4ba330;
+}
+
 .my-bg-title {
     line-height: 1.3em;
+    color: #3d76d3;
 }
 
 
@@ -258,6 +276,15 @@ body, html {
     width: 100%;
 }
 
+.portfo-thumb-limit {
+    max-height: 230px;
+    overflow-y: hidden;
+}
+
+.imageresource {
+    position: center;
+}
+
  /* Centers the Modal */
 .modal {
   text-align: center;
@@ -295,11 +322,18 @@ body, html {
     margin: auto;
 }
 
-.modal button.close {
+.modal .close {
     /*padding-left: 20px;*/
     color: white;
 }
  /* code that sets modal image dimensions according to screen width ends */
+ 
+ /* "overflow: visible" keeps the scroll bar visible while "padding-right: 0 !important" overrides .modal-open's default element 
+ inline style of "padding-right: 17px" */
+.modal-open {
+    overflow: visible;
+    padding-right: 0 !important;
+}
 
 /**************************************/
 /* Blog PAGE */
@@ -353,10 +387,10 @@ body, html {
 /*}*/
 
 .contact-background {
-    background: url("../images/SB_crop_blur1.jpg");
+    /*background: url("../images/SB_crop_blur1.jpg");*/
     /*-webkit-filter: blur(2px);*/
     /*filer: blur(2px);*/
-    /*background: url("../images/thinking.jpg");*/
+    background: url("../images/Santa_Barbara_Cropped.jpg");
     /*background: url("../images/MP_Cropped.jpg");*/
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
@@ -371,7 +405,7 @@ body, html {
     position: relative;
     color: white;
     top: 35%;
-    font-size: calc(15px + 6vw);
+    font-size: calc(20px + 5.5vw);
     line-height: 1em;
 }
 
@@ -379,12 +413,12 @@ body, html {
     position: relative;
     color: white;
     top: 32%;
-    font-size: calc(12px + 1.5vw);
-    line-height: 2em;
+    font-size: calc(15px + 1.3vw);
+    line-height: 3em;
 }
 
 .contact-text {
-    padding-left: calc(140px);
+    padding-left: calc(11vw);
 }
 
  /* selects each of the index page's sections (after the main picture) */

@@ -1,12 +1,18 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container content-beginning">
     <div class="row">
         <h1 style="text-align: center;">Edit <%= portfolio.name %></h1>
         
         <div style="width: 30%; margin: 25px auto;">
             <form action="/portfolio/<%= portfolio._id %>?_method=PUT" method="POST">
                 <!-- the form-group class divs add spacing between the items in the form -->
+                <div class="form-group">
+                    <select class="form-control" name="portfolio[type]" type="text" required>
+                        <option value="Work" <%= (portfolio.type == "Work") ? 'selected' : '' %>>Work</option>
+                        <option value="Art" <%= (portfolio.type == "Art") ? 'selected' : '' %>>Art</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <input class="form-control" name="portfolio[title]" type="text" value="<%= portfolio.title %>" required>
                 </div>
