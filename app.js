@@ -1,5 +1,6 @@
 // require installation
-var methodOverride   = require("method-override"),
+var expressSanitizer = require("express-sanitizer"),
+    methodOverride   = require("method-override"),
     bodyParser       = require("body-parser"),
     mongoose         = require("mongoose"),
     express          = require("express"),
@@ -14,6 +15,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+app.use(expressSanitizer());
 
 // connects our express app to the mongoDB
 mongoose.connect("mongodb://localhost/p_web", {useNewUrlParser: true});
@@ -54,6 +56,7 @@ app.get("/portfolio/new", function(req, res) {
 });
  // CREATE portfolio route
 app.post("/portfolio", function(req, res) {
+    req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
     var newPortfolio = req.body.portfolio;
     Portfolio.create(newPortfolio, function(err, newlyCreated) {
         if (err) {
@@ -89,6 +92,7 @@ app.get("/portfolio/:id/edit", function(req, res) {
 });
  // UPDATE portfolio route
 app.put("/portfolio/:id", function(req, res) {
+    req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
     var updatedPortfolio = req.body.portfolio;
     Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio, function(err, editedPortfolio) {
         if (err) {
@@ -131,6 +135,7 @@ app.get("/blog/new", function(req, res) {
 });
  // CREATE blog route
 app.post("/blog", function(req, res) {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     var newBlog = req.body.blog;
     Blog.create(newBlog, function(err, newlyCreated) {
         if (err) {
@@ -166,6 +171,7 @@ app.get("/blog/:id/edit", function(req, res) {
 });
  // UPDATE blog route
 app.put("/blog/:id", function(req, res) {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     var updatedBlog = req.body.blog;
     Blog.findByIdAndUpdate(req.params.id, updatedBlog, function(err, editedBlog) {
         if (err) {

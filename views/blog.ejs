@@ -18,7 +18,7 @@
     				<!--<img class="thumb-img" src="/images/enigma.jpg">-->
     				<a href="/blog/<%= blog._id %>"><img class="blog-img" src="<%= blog.image %>"></a>
     				<div class="caption">
-    				    <p><span><%= blog.created.toDateString() %></span></p>
+    				    <p style="color: gray"><span><%= blog.category %> - <%= blog.created.toDateString() %></span></p>
     				    <a href="/blog/<%= blog._id %>"><h3 style="margin-top: 0"><%= blog.title %></h3></a>
                         <p><%- blog.body.substring(0, 100) + "..." %></p>
                         <a type="button" class="btn btn-success" href="/blog/<%= blog._id %>">Read More</a>

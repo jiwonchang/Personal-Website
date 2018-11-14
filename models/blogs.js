@@ -5,6 +5,7 @@ var blogSchema = new mongoose.Schema({
     category: String,
     title: String,
     image: {type: String, default: "https://i.kinja-img.com/gawker-media/image/upload/s--gNscB14c--/c_scale,f_auto,fl_progressive,q_80,w_800/18j2u6zfdsj9bjpg.jpg"},
+    image_desc: String,
     video: String,
     body: String,
     created: {type: Date, default: Date.now}
