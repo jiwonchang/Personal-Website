@@ -18,7 +18,10 @@ app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
 // connects our express app to the mongoDB
-mongoose.connect("mongodb://localhost/p_web", {useNewUrlParser: true});
+// we've set the environment variable DATABASEURL to be the localhost mongo db if we're running the code within cloud 9
+// otherwise, we've set DATABASEURL to be the MongoLab/MLab Database
+var dbURL = process.env.DATABASEURL || "mongodb://localhost/p_web";
+mongoose.connect(dbURL, {useNewUrlParser: true});
 
 // index page routes ************************
 app.get("/", function(req, res) {
@@ -129,6 +132,20 @@ app.get("/blog", function(req, res) {
         }
     });
 });
+
+// var blogCategories = {
+//     "Thoughts": [],
+//     "Opinion": [], 
+//     "Life": [], 
+//     "Lessons": [], 
+//     "Advice": [], 
+//     "Food": [], 
+//     "Tech": [], 
+//     "Art": [], 
+//     "Sports": [], 
+//     "Random": []
+// }
+
  // NEW blog route
 app.get("/blog/new", function(req, res) {
     res.render("blogs/new");
@@ -141,8 +158,10 @@ app.post("/blog", function(req, res) {
         if (err) {
             res.redirect("back");
         } else {
-            // the .sort({date: -1}) sorts the collection in MongoDB in chronological order (newest -> oldest)
-            // Blog.find().sort({date: -1});
+            // add the blog to the array of its respective category, to retrieve later in the "related posts" section
+            // var categ = newBlog.category;
+            // blogCategories[categ].push(newBlog);
+            // console.log(blogCategories);
             res.redirect("/blog");
         }
     });
