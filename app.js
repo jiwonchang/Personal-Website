@@ -1,3 +1,5 @@
+// https://protected-bastion-78480.herokuapp.com/ is the Heroku site
+
 // require installation
 var expressSanitizer = require("express-sanitizer"),
     methodOverride   = require("method-override"),
