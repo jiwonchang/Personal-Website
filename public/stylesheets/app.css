@@ -118,13 +118,16 @@ body {
     font-size: calc(30px + 5.0vw);
 }
 
+.intro-text span {
+    display: inline-block;
+}
+
  /* makes the subtitle (smaller font just below the "Hello!" introduction title) */
 .intro-subtitle {
     position: relative;
     color: white;
     top: 32%;
     font-size: calc(20px + 0.95vw);
-    padding-top: calc(50px - 5vw);
 }
 
  /* selects each of the index page's sections (after the main picture) */
