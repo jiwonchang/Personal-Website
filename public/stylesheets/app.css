@@ -115,7 +115,7 @@ body {
     position: relative;
     color: white;
     top: 35%;
-    font-size: calc(15px + 6.2vw);
+    font-size: calc(30px + 5.0vw);
 }
 
  /* makes the subtitle (smaller font just below the "Hello!" introduction title) */
@@ -123,7 +123,7 @@ body {
     position: relative;
     color: white;
     top: 32%;
-    font-size: calc(12px + 1.5vw);
+    font-size: calc(20px + 0.95vw);
 }
 
  /* selects each of the index page's sections (after the main picture) */
