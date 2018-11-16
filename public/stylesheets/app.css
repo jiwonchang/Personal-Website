@@ -124,7 +124,7 @@ body {
     color: white;
     top: 32%;
     font-size: calc(20px + 0.95vw);
-    padding-top: calc(50px - 2vw);
+    padding-top: calc(50px - 5vw);
 }
 
  /* selects each of the index page's sections (after the main picture) */
