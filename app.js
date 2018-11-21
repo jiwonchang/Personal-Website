@@ -192,7 +192,7 @@ app.get("/blog/:id/edit", function(req, res) {
 });
  // UPDATE blog route
 app.put("/blog/:id", function(req, res) {
-    req.body.blog.body = req.sanitize(req.body.blog.body);
+    // req.body.blog.body = req.sanitize(req.body.blog.body);
     var updatedBlog = req.body.blog;
     Blog.findByIdAndUpdate(req.params.id, updatedBlog, function(err, editedBlog) {
         if (err) {

@@ -180,7 +180,8 @@ body {
     position: relative;
     /*top: 30%;*/
     /* the line height "centers" the text vertically and also makes the text easier to see */
-    line-height: 40px;
+    line-height: calc(25px + 1vw);
+    font-size: calc(15px + 0.6vw);
 }
 
 .my-bg-pic {
@@ -193,6 +194,7 @@ body {
     /*max-height: 18em;*/
     /*min-width: 10em;*/
     /*min-height: 7em;*/
+    margin-top: 30px;
 }
 
 .my-bg-text {
@@ -207,6 +209,11 @@ body {
 .my-bg-title {
     line-height: 1.3em;
     color: #3d76d3;
+}
+
+.my-bg-content {
+    line-height: 1.6em;
+    color: #3a3a3a;
 }
 
 
@@ -393,7 +400,8 @@ body {
 .blog-title {
     font-size: 50px;
     font-weight: 700;
-    width: 60%; 
+    /*width: 60%; */
+    width: 70%;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -405,7 +413,7 @@ body {
 
  /* the descriptive text below the blog show page main image */
 .blog-img-desc {
-    font-size: 20px;
+    font-size: calc(14px + 0.4vw);
     font-style: italic;
     margin-top: 10px;
     margin-bottom: 0;
@@ -414,22 +422,47 @@ body {
  /* the category - date description above the title of the blog show page */
 .blog-categ-date {
     font-size: 15px;
-    width: 60%; 
+    /*width: 60%; */
+    width: 70%; 
     margin: 10px auto 0 auto;
     padding-bottom: 0;
     color: gray;
 }
 
+/* the div containing the body */
+.blog-body-div {
+    /*width: 60%;*/
+    width: 70%;
+    margin: 25px auto;
+}
+
  /* the body/content portion of the blog show page */
 .blog-body {
     margin: 30px 0;
-    font-size: 20px;
-    line-height: 35px;
+    font-size: calc(15px + 0.4vw);
+    /*line-height: 35px;*/
+    line-height: calc(20px + 1.1vw);
 }
 
  /* gives the paragraphs found inside the .blog-body div have more spaces between the paragraphs */
 .blog-body p {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+    margin-bottom: calc(10px + 0.7vw);
+}
+
+ /* preserves the video's proper ratio even as the browser window changes in size. */
+.aspect-ratio {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 51%;
+}
+ /* makes the iframe (i.e. video element) within the "aspect-ratio" class div take up the whole div */
+.aspect-ratio iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0; top: 0;
 }
 
 /**************************************/

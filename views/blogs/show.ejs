@@ -3,9 +3,9 @@
 <div class="container content-beginning">
     <div class="row">
         <!--<a href="/blog">Go Back</a>-->
-        <p class="blog-categ-date"><%= blog.category %> - <%= blog.created.toDateString() %></p>
+        <p class="blog-categ-date"><%= blog.category %> &bull; <%= blog.created.toDateString() %></p>
         <h1 class="blog-title"><%= blog.title %></h1>
-        <div style="width: 60%; margin: 25px auto;">
+        <div class="blog-body-div">
             <img class="blog-show-img" src="<%= blog.image %>">
             <div class="blog-img-desc"><%- blog.image_desc %></div>
             <div class="blog-body"><%- blog.body %></div>
