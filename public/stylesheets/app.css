@@ -102,6 +102,16 @@ body {
     text-align: center;
 }
 
+/* change index background image when screen width is smaller */
+/*@media (max-width: 500px) {*/
+@media (max-width: 700px) {
+    .background {
+        background: url('../images/Mission_Peak.jpg');
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
  /* makes the transparent, darker layer above the picture (for better overlay word legibility) */
 .layer {
     background-color: rgba(20,30,10,0.2);
@@ -247,8 +257,8 @@ body {
 /* ABOUT PAGE */
 /**************************************/
 #about-intro-photo {
-    width: 100%;
     height: 500px;
+    overflow: hidden;
 }
 
 .about-background {
@@ -279,6 +289,25 @@ body {
 /**************************************/
 /* PORTFOLIO PAGE */
 /**************************************/
+
+.portfolio-background {
+    background: url("../images/destiny.jpg");
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    height: 100%;
+    text-align: center;
+}
+
+/* change portfolio background image position when screen width is smaller */
+@media (min-width: 800px) {
+    .portfolio-background {
+        /*background: url('../images/kid_me.png');*/
+        background-position: center -180px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
 
  /* makes it so that the bootstrap columns move onto a new row if the 12 column spaces have been filled, or if the inclusion
  of the new column will exceed that 12 column space. Also used outside of the portfolio page (in the index page, "My background"
@@ -356,9 +385,18 @@ body {
     width: 100%;
 }
 
+ /* the descriptive text below the blog show page main image */
+.portfolio-img-desc {
+    font-size: calc(14px + 0.4vw);
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 .portfolio-date {
     font-size: 15px;
-    width: 60%; 
+    /*width: 60%; */
+    width: 70%; 
     margin: 10px auto 0 auto;
     padding-bottom: 0;
     color: gray;
@@ -367,17 +405,35 @@ body {
 .portfolio-title {
     font-size: 50px;
     font-weight: 700;
-    width: 60%; 
+    /*width: 60%; */
+    width: 70%;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
+/* the div containing the body */
+.portfolio-body-div {
+    /*width: 60%;*/
+    width: 70%;
+    margin: 25px auto;
+}
+
 .portfolio-body {
     margin: 30px 0;
-    font-size: 20px;
-    line-height: 35px;
+    font-size: calc(15px + 0.4vw);
+    line-height: calc(20px + 1.1vw);
+}
+
+ /* gives the paragraphs found inside the .portfolio-body div have more spaces between the paragraphs */
+.portfolio-body p {
+    /*margin-bottom: 20px;*/
+    margin-bottom: calc(10px + 0.7vw);
+}
+
+.portfolio-body img {
+    width: 100%;
 }
 
 /**************************************/

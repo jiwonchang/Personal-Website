@@ -61,7 +61,7 @@ app.get("/portfolio/new", function(req, res) {
 });
  // CREATE portfolio route
 app.post("/portfolio", function(req, res) {
-    req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
+    // req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
     var newPortfolio = req.body.portfolio;
     Portfolio.create(newPortfolio, function(err, newlyCreated) {
         if (err) {
@@ -97,7 +97,7 @@ app.get("/portfolio/:id/edit", function(req, res) {
 });
  // UPDATE portfolio route
 app.put("/portfolio/:id", function(req, res) {
-    req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
+    // req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
     var updatedPortfolio = req.body.portfolio;
     Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio, function(err, editedPortfolio) {
         if (err) {

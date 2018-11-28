@@ -4,16 +4,20 @@ $(".pop").on("click", function() {
    $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
 });
 
+// function for parallax scrolling
+$(window).on('scroll', function() {
+   //  $('.background').css('margin-top', $(window).scrollTop() * .3);
+    $('.parallax').css('margin-top', $(window).scrollTop() * .5);
+});
 
-// OLD NAV BAR
-
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-
-// function myFunction() {
-//     var x = document.getElementById("myTopnav");
-//     if (x.className === "topnav") {
-//         x.className += " responsive";
-//     } else {
-//         x.className = "topnav";
-//     }
-// }
+// function for changing the index page background 
+// $(function() {
+//     $(window).resize(function() {
+//        if ($(this).width() < 1000) {
+//             $('body').css('background-image', "url('images/background-mobile.svg')");
+//        } else { 
+//             // default setting for desktop here...
+//             $('body').css('background-image', 'none');
+//        }
+//     });
+// });
