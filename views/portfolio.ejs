@@ -26,10 +26,10 @@
     		<% if (portfolio.type === "Work") { %>
 		        <div class="col-lg-4 col-sm-6 col-xs-12">
 					<div class="thumbnail">
-						<img class="thumb-img" src="<%= portfolio.image %>">
+						<a href="/portfolio/<%= portfolio._id %>"><img class="thumb-img" src="<%= portfolio.image %>"></a>
 						<div class="caption">
-						    <h4><%= portfolio.title %></h4>
-						    <p><%= portfolio.created.toDateString() %></p>
+							<p><%= portfolio.created.toDateString() %></p>
+						    <a href="/portfolio/<%= portfolio._id %>"><h3 style="margin-top: 0"><%= portfolio.title %></h3></a>
 		                    <p><%- portfolio.body.substring(0, 100) + "..." %></p>
 		                    <a type="button" class="btn btn-success" href="/portfolio/<%= portfolio._id %>">Read More</a>
 						</div>

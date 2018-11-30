@@ -102,15 +102,7 @@ body {
     text-align: center;
 }
 
-/* change index background image when screen width is smaller */
-/*@media (max-width: 500px) {*/
-@media (max-width: 700px) {
-    .background {
-        background: url('../images/Mission_Peak.jpg');
-        background-position: center center;
-        background-size: cover;
-    }
-}
+
 
  /* makes the transparent, darker layer above the picture (for better overlay word legibility) */
 .layer {
@@ -403,7 +395,8 @@ body {
 }
 
 .portfolio-title {
-    font-size: 50px;
+    /*font-size: 50px;*/
+    font-size: calc(20px + 1.8vw);
     font-weight: 700;
     /*width: 60%; */
     width: 70%;
@@ -454,7 +447,8 @@ body {
 }
 
 .blog-title {
-    font-size: 50px;
+    /*font-size: 50px;*/
+    font-size: calc(20px + 1.8vw);
     font-weight: 700;
     /*width: 60%; */
     width: 70%;
@@ -628,3 +622,53 @@ body {
 /*.navbar-icon {*/
 /*    font-size: 25px;*/
 /*}*/
+
+/*@media (max-width: 500px) {*/
+@media (max-width: 700px) {
+    /* change index background image when screen width is smaller */
+    .background {
+        background: url('../images/Mission_Peak.jpg');
+        background-position: center center;
+        background-size: cover;
+    }
+    
+    /* centers text in the index page when screen width is smaller */
+    .intro-div div {
+        margin: 0 auto;
+    }
+    
+    /* reduces awkward space between "Hi! I'm" and "Henry Chang" in the intro text when screen is thinner */
+    /* also, adds more distance between the intro title text and the intro subtitle text*/
+    .intro-text {
+        line-height: calc(50px + 0.5vw);
+        margin-bottom: calc(30px + 0.5vw);
+    }
+    
+    .intro-section h3 {
+        line-height: 45px;
+        margin-top: 0;
+    }
+    
+    /* changes the width of the portfolio show page's title, date, and body to be 90% when screen width is smaller */
+    .portfolio-body-div, .portfolio-date, .portfolio-title {
+        width: 90% !important;
+    }
+    
+    /* changes the width of the blog show page's title, date, and body to be 90% when screen width is smaller */
+    .blog-body-div, .blog-categ-date, .blog-title {
+        width: 90% !important;
+    }
+    
+    /*.index-to-port-btn {*/
+    /*    margin-top: 10px;*/
+    /*}*/
+    
+    
+    
+    /* change contact page background image when screen width is smaller */
+    .contact-background {
+        background: url('../images/kid_me.png');
+        background-position: center center;
+        background-size: cover;
+    }
+}

@@ -7,7 +7,7 @@ $(".pop").on("click", function() {
 // function for parallax scrolling
 $(window).on('scroll', function() {
    //  $('.background').css('margin-top', $(window).scrollTop() * .3);
-    $('.parallax').css('margin-top', $(window).scrollTop() * .5);
+    $('.parallax').css('margin-top', $(window).scrollTop() * .9);
 });
 
 // function for changing the index page background 
