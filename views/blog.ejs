@@ -9,9 +9,13 @@
 </div>
 
 <!-- will need to put all the blog post data into a database; will also need to have a way to easily create blog posts -->
-<div class="container" style="padding: 4em 0">
+<div class="container">
     
-    <div class="row flex">
+    <% if (currentUser) { %>
+    	<a type="button" class="btn btn-primary btn-lg" href="/blog/new" style="margin-top: 2em">Create New Post</a>
+    <% } %>
+    
+    <div class="row flex" style="padding-top: 2em">
         <% blogs.forEach(function(blog) { %>
             <div class="col-lg-4 col-sm-6 col-xs-12">
     			<div class="thumbnail" style="border:none">
