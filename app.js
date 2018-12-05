@@ -62,8 +62,7 @@ mongoose.connect(dbURL, {useNewUrlParser: true});
 
 // index page routes ************************
 app.get("/", function(req, res) {
-    var blogs = {calBlog: null, ucsbBlog: null};
-    // var blogs = {calBlog: Blog.find({title: "The Climb in UC Berkeley"}), ucsbBlog: null};
+    // var blogs = {calBlog: null, ucsbBlog: null};
     // Blog.find({title: "The Climb in UC Berkeley"}, function(err, CalBlog) {
     //     if (err) {
     //         console.log(err);
@@ -71,7 +70,6 @@ app.get("/", function(req, res) {
     //         blogs.calBlog = CalBlog;
     //     }
     // });
-    // console.log(blogs.calBlog);
     // Blog.find({title: "Golden Years in UCSB"}, function(err, UCSBBlog) {
     //     if (err) {
     //         console.log(err);
@@ -79,7 +77,30 @@ app.get("/", function(req, res) {
     //         blogs.ucsbBlog = UCSBBlog;
     //     }
     // });
-    res.render("index", {calBlog: blogs.calBlog, ucsbBlog: blogs.ucsbBlog});
+    
+    // console.log(blogs.calBlog);
+    // res.render("index", {calBlog: blogs.calBlog, ucsbBlog: blogs.ucsbBlog});
+    
+    var titleArray = [{title: "Golden Years in UCSB"}, {title: "The Climb in UC Berkeley"}];
+    
+    Blog.find({"$or": titleArray}, function(err, results) {
+            if (err) {
+                console.log(err);
+            } else {
+                var ucsbBlog = null;
+                var calBlog = null;
+                if (results.length === titleArray.length) {
+                    ucsbBlog = results[0];
+                    calBlog = results[1];
+                }
+                // console.log(ucsbBlog);
+                // console.log(calBlog);
+                res.render("index", {calBlog: calBlog, ucsbBlog: ucsbBlog});
+            }
+        }
+    );
+    
+    // res.render("index", {calBlog: null, ucsbBlog: null});
 });
 
 // app.get("/about", function(req, res) {
