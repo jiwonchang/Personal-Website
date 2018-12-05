@@ -14,6 +14,9 @@ var passportLocalMongoose = require("passport-local-mongoose"),
     express               = require("express"),
     app                   = express();
     
+// require environment vars
+require("dotenv").config();
+
 // require models from modules
 var Blog = require("./models/blogs");
 var Portfolio = require("./models/portfolios");
@@ -25,7 +28,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
-// app.use(flash);
+app.use(flash());
+// console.log(process.env.EXPRESS_SESSION_SECRET);
 app.use(expressSession({
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: false,
@@ -43,9 +47,9 @@ app.use(function(req, res, next) {
     // whatever we put in "res.locals" becomes available in every template/route/page
     res.locals.currentUser = req.user;
     // we also make the flash error message "error" variable accessible in every page that is being rendered
-    // res.locals.error = req.flash("error");
+    res.locals.error = req.flash("error");
     // we also make the flash success message "success" variable accessible in every page that is being rendered
-    // res.locals.success = req.flash("success");
+    res.locals.success = req.flash("success");
     // The "next()" function is CRUCIAL; if we don't have it, the code will stop after the execution of the middleware
     next();
 });
@@ -75,6 +79,7 @@ app.get("/resume", function(req, res) {
 app.get("/portfolio", function(req, res) {
     Portfolio.find({}, function(err, allPortfolios) {
         if (err) {
+            req.flash("error", "Something went wrong while retrieving all portfolio entries!");
             res.redirect("back");
         } else {
             // the .reverse() reverses the array we get from the database; this conveniently works for us since the newest
@@ -100,6 +105,7 @@ app.post("/portfolio", isLoggedIn, function(req, res) {
     };
     Portfolio.create(newPortfolio, function(err, newlyCreated) {
         if (err) {
+            req.flash("error", "Something went wrong while creating the portfolio entry!");
             res.redirect("back");
         } else {
             // the .sort({date: -1}) sorts the collection in MongoDB in chronological order (newest -> oldest)
@@ -112,9 +118,14 @@ app.post("/portfolio", isLoggedIn, function(req, res) {
 app.get("/portfolio/:id", function(req, res) {
     Portfolio.findById(req.params.id, function(err, foundPortfolio) {
         if (err) {
+            req.flash("error", "That portfolio entry does not exist!");
             res.redirect("/portfolio");
             console.log(err);
         } else {
+            if (foundPortfolio === null) {
+                req.flash("error", "That portfolio entry does not exist!");
+                return res.redirect("/portfolio");
+            }
             res.render("portfolios/show", {portfolio: foundPortfolio});
         }
     });
@@ -123,9 +134,14 @@ app.get("/portfolio/:id", function(req, res) {
 app.get("/portfolio/:id/edit", checkPortfolioOwnership, function(req, res) {
     Portfolio.findById(req.params.id, function(err, foundPortfolio) {
         if (err) {
+            req.flash("error", "That porfolio entry could not be found");
             res.redirect("back");
             console.log(err);
         } else {
+            if (foundPortfolio === null) {
+                req.flash("error", "That portfolio entry does not exist!");
+                return res.redirect("/portfolio");
+            }
             res.render("portfolios/edit", {portfolio: foundPortfolio});
         }
     });
@@ -136,6 +152,7 @@ app.put("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
     var updatedPortfolio = req.body.portfolio;
     Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio, function(err, editedPortfolio) {
         if (err) {
+            req.flash("error", "Something went wrong while updating that portfolio entry!");
             res.redirect("back");
         } else {
             res.redirect("/portfolio/" + req.params.id);
@@ -146,6 +163,7 @@ app.put("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
 app.delete("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
     Portfolio.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
+            req.flash("error", "Something went wrong while deleting that portfolio entry!");
             res.redirect("back");
         } else {
             res.redirect("/portfolio");
@@ -158,6 +176,7 @@ app.delete("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
 app.get("/blog", function(req, res) {
     Blog.find({}, function(err, allBlogs) {
         if (err) {
+            req.flash("error", "Something went wrong while retrieving all blog posts!");
             res.redirect("back");
         } else {
             // the .reverse() reverses the array we get from the database; this conveniently works for us since the newest
@@ -189,7 +208,7 @@ app.get("/blog/new", isLoggedIn, function(req, res) {
 });
  // CREATE blog route
 app.post("/blog", isLoggedIn, function(req, res) {
-    req.body.blog.body = req.sanitize(req.body.blog.body);
+    // req.body.blog.body = req.sanitize(req.body.blog.body);
     var newBlog = req.body.blog;
     newBlog.author = {
         id: req.user._id,
@@ -197,6 +216,7 @@ app.post("/blog", isLoggedIn, function(req, res) {
     };
     Blog.create(newBlog, function(err, newlyCreated) {
         if (err) {
+            req.flash("error", "Something went wrong while creating that blog post!");
             res.redirect("back");
         } else {
             // add the blog to the array of its respective category, to retrieve later in the "related posts" section
@@ -211,9 +231,14 @@ app.post("/blog", isLoggedIn, function(req, res) {
 app.get("/blog/:id", function(req, res) {
     Blog.findById(req.params.id, function(err, foundBlog) {
         if (err) {
+            req.flash("error", "That blog post does not exist!");
             res.redirect("/blog");
             console.log(err);
         } else {
+            if (foundBlog === null) {
+                req.flash("error", "That blog post does not exist!");
+                return res.redirect("/blog");
+            }
             res.render("blogs/show", {blog: foundBlog});
         }
     });
@@ -222,9 +247,14 @@ app.get("/blog/:id", function(req, res) {
 app.get("/blog/:id/edit", checkBlogOwnership, function(req, res) {
     Blog.findById(req.params.id, function(err, foundBlog) {
         if (err) {
+            req.flash("error", "That blog post does not exist!");
             res.redirect("back");
             console.log(err);
         } else {
+            if (foundBlog === null) {
+                req.flash("error", "That blog post does not exist!");
+                return res.redirect("/blog");
+            }
             res.render("blogs/edit", {blog: foundBlog});
         }
     });
@@ -235,6 +265,7 @@ app.put("/blog/:id", checkBlogOwnership, function(req, res) {
     var updatedBlog = req.body.blog;
     Blog.findByIdAndUpdate(req.params.id, updatedBlog, function(err, editedBlog) {
         if (err) {
+            req.flash("error", "Something went wrong while updating that blog post!");
             res.redirect("back");
         } else {
             res.redirect("/blog/" + req.params.id);
@@ -245,12 +276,13 @@ app.put("/blog/:id", checkBlogOwnership, function(req, res) {
 app.delete("/blog/:id", checkBlogOwnership, function(req, res) {
     Blog.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
+            req.flash("error", "Something went wrong while deleting that blog post!");
             res.redirect("back");
         } else {
             res.redirect("/blog");
         }
-    })
-})
+    });
+});
 
 // contact me routes ************************
 app.get("/contact", function(req, res) {
@@ -292,6 +324,7 @@ app.post("/contact", function(req, res) {
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            req.flash("error", "The message could not be sent");
             return console.log(error);
         } else {
             console.log('Message sent: %s', info.messageId);
@@ -300,6 +333,7 @@ app.post("/contact", function(req, res) {
     
             // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
             // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+            req.flash("success", "Your message has been successfully sent!");
             res.redirect("/contact");
         }
     });
@@ -359,7 +393,7 @@ function isLoggedIn(req, res, next) {
     // "req.flash()" requires two arguments: a key and a message
     // "req.flash()" does not display the message on the current page; it always displays the message ON THE NEXT PAGE.
     // therefore, req.flash() must always be used BEFORE a redirect.
-    // req.flash("error", "You need to be logged in to do that");
+    req.flash("error", "You need to be logged in to do that");
     
     // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
     req.session.returnTo = req.originalUrl;
@@ -378,6 +412,7 @@ function checkBlogOwnership(req, res, next) {
                 if (foundBlog.author.id.equals(req.user._id)) {
                     next();
                 } else {
+                    req.flash("error", "You don't have permission to do that");
                     // redirect
                     res.redirect("back");
                 }
@@ -387,6 +422,7 @@ function checkBlogOwnership(req, res, next) {
         // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
         req.session.returnTo = req.originalUrl;
         // console.log(req.session.returnTo);
+        req.flash("error", "You need to be logged in to do that");
         res.redirect("/login");
     }
 }
@@ -401,6 +437,7 @@ function checkPortfolioOwnership(req, res, next) {
                 if (foundPortfolio.author.id.equals(req.user._id)) {
                     next();
                 } else {
+                    req.flash("error", "You don't have permission to do that");
                     // redirect
                     res.redirect("back");
                 }
@@ -410,6 +447,7 @@ function checkPortfolioOwnership(req, res, next) {
         // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
         req.session.returnTo = req.originalUrl;
         // console.log(req.session.returnTo);
+        req.flash("error", "You need to be logged in to do that");
         res.redirect("/login");
     }
 }

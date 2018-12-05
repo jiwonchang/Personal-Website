@@ -28,6 +28,10 @@ body {
     padding-top: 70px;
 }
 
+.flash-message {
+    margin-bottom: -70px;
+}
+
 /* .page-divider gives the pager divider (aka the "-----" and "-----" next to the title of a section)*/
 .page-divider {
   overflow: hidden;
@@ -274,7 +278,7 @@ body {
     position: relative;
     color: white;
     top: 35%;
-    font-size: calc(15px + 6vw);
+    font-size: calc(30px + 5.5vw);
     line-height: 1em;
 }
 
@@ -654,6 +658,15 @@ body {
         width: 90% !important;
     }
     
+    /* changes the blog background image when the screen width is small enough */
+    .blog-background {
+        background: url('../images/sb_sunset_vert.jpg');
+        /*background: url('../images/sb_sunset_horiz.jpg');*/
+        /*background: url('../images/sb_clouds.jpg');*/
+        background-position: center center;
+        background-size: cover;
+    }
+    
     /* changes the width of the blog show page's title, date, and body to be 90% when screen width is smaller */
     .blog-body-div, .blog-categ-date, .blog-title {
         width: 90% !important;
@@ -670,6 +683,7 @@ body {
         background-size: cover;
     }
     
+    /* changes the form width in the new/edit forms for the blog and portfolio pages if the screen width is small */
     .fill-out-form {
         width: 90% !important;
     }
