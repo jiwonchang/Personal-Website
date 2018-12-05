@@ -5,9 +5,12 @@ $(".pop").on("click", function() {
 });
 
 // function for parallax scrolling
-$(window).on('scroll', function() {
-   //  $('.background').css('margin-top', $(window).scrollTop() * .3);
-    $('.parallax').css('margin-top', $(window).scrollTop() * .9);
+$window = $(window);
+$window.on('scroll', function() {
+   if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      //  $('.background').css('margin-top', $(window).scrollTop() * .3);
+       $('.parallax').css('margin-top', $(window).scrollTop() * .9);
+   }
 });
 
 // function for changing the index page background 
