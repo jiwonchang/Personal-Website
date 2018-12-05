@@ -6,7 +6,7 @@
     <div class="row">
         <h1 style="text-align: center;">Edit <%= blog.name %></h1>
         
-        <div style="width: 30%; margin: 25px auto;">
+        <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
             <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
                 <!-- the form-group class divs add spacing between the items in the form -->
                 <div class="form-group">

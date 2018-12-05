@@ -663,12 +663,14 @@ body {
     /*    margin-top: 10px;*/
     /*}*/
     
-    
-    
     /* change contact page background image when screen width is smaller */
     .contact-background {
         background: url('../images/kid_me.png');
         background-position: center center;
         background-size: cover;
+    }
+    
+    .fill-out-form {
+        width: 90% !important;
     }
 }
