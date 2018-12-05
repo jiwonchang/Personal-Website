@@ -1,11 +1,32 @@
 <% include ./partials/header %>
 
-<h1 class="content-beginning">Login!</h1>
+<div class="container content-beginning" style="text-align: center">
+    <div class="well">
+    <!--<img src="/images/authonly.png" style="width: 20%; height: 20%">-->
+    
+    <!--<p style="font-size: calc(25px)">Well, hello!</p>-->
+    <!--<p style="font-size: calc(20px)">You're not supposed to be here...</p>-->
+    <!--<p style="font-size: calc(15px); margin-bottom: 20px">Or maybe you are!</p>-->
+    
+    <p style="font-size: calc(22px + 1vw); margin-bottom: 0.1vw">Well, hello!</p>
+    <p style="font-size: calc(15px + 1vw); margin-bottom: 0.4vw">You're not supposed to be here...</p>
+    <p style="font-size: calc(10px + 1vw); margin-bottom: 20px">(Or maybe you are!)</p>
 
-<form action="/login" method="POST">
-    <input type="text" placeholder="username" name="username">
-    <input type="password" placeholder="password" name="password">
-    <button>Login</button>
-</form>
+    <img src="/images/youshallnotpass.gif" style="max-width: 90%">
+    
+    <form action="/login" method="POST" style="margin-top: 20px;">
+        <div class="form-group">
+            <input class="form-control" name="username" type="text" placeholder="Username" required style="width: calc(250px + 2vw); margin: auto">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" type="text" placeholder="Password" required style="width: calc(250px + 2vw); margin: auto">
+        </div>
+        
+        <!--<input type="text" placeholder="username" name="username">-->
+        <!--<input type="password" placeholder="password" name="password" style="display: block">-->
+        <button class="btn btn-primary btn-lg">Login</button>
+    </form>
+    </div>
+</div>
 
 <% include ./partials/footer %>

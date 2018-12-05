@@ -21,7 +21,7 @@ require("dotenv").config();
 var Blog = require("./models/blogs");
 var Portfolio = require("./models/portfolios");
 var User = require("./models/user");
-    
+
 // general set-up
 app.set("view engine", "ejs");    
 app.use(express.static("public"));
