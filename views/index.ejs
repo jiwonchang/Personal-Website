@@ -79,9 +79,16 @@
                                 <li>CS 188 - Introduction to Artificial Intelligence</li>
                                 <!--<li>CS 195 - Social Implications of Computer Technology</li>-->
                             </ol>
-                            <p>
-                                You can read more about my journey in UC Berkeley <a href="/blog/5be391e7dd1b4d1566463017">here</a>!
-                            </p>
+                            <% if (calBlog) { %>
+                                <p>
+                                    You can read more about my journey in UC Berkeley <a href="/blog/<%= calBlog._id %>">here</a>!
+                                </p>
+                            <% } else { %>
+                                <p>
+                                    <!--You can read more about my journey in UC Berkeley in my blog!-->
+                                    You can read more about my journey in UC Berkeley <a href="/blog/5c0789ef8076c80016b425d1">here</a>!
+                                </p>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -107,9 +114,16 @@
                                 <li>Computer Science 8 - Intro to Computer Science</li>
                                 <li>Theater 5 - Intro to Acting</li>
                             </ol>
-                            <p>
-                                You can read more about my journey in UCSB <a href="/blog/5be3693244271f08ee43ffea">here</a>!
-                            </p>
+                            <% if (ucsbBlog) { %>
+                                <p>
+                                    You can read more about my journey in UCSB <a href="/blog/<%= ucsbBlog._id %>">here</a>!
+                                </p>
+                            <% } else { %>
+                                <p>
+                                    <!--You can read more about my journey in UCSB in my blog!-->
+                                    You can read more about my journey in UCSB <a href="/blog/5c0789cf8076c80016b425d0">here</a>!
+                                </p>
+                            <% } %>
                             <!--<p>-->
                             <!--    It was also in UCSB that I discovered my passion for computer science. While I had at first taken the -->
                             <!--    computer science course to fulfill a prerequisite for my Statistics major, I soon found myself -->

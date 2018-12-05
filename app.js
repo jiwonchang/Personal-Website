@@ -62,7 +62,24 @@ mongoose.connect(dbURL, {useNewUrlParser: true});
 
 // index page routes ************************
 app.get("/", function(req, res) {
-    res.render("index");
+    var blogs = {calBlog: null, ucsbBlog: null};
+    // var blogs = {calBlog: Blog.find({title: "The Climb in UC Berkeley"}), ucsbBlog: null};
+    // Blog.find({title: "The Climb in UC Berkeley"}, function(err, CalBlog) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         blogs.calBlog = CalBlog;
+    //     }
+    // });
+    // console.log(blogs.calBlog);
+    // Blog.find({title: "Golden Years in UCSB"}, function(err, UCSBBlog) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         blogs.ucsbBlog = UCSBBlog;
+    //     }
+    // });
+    res.render("index", {calBlog: blogs.calBlog, ucsbBlog: blogs.ucsbBlog});
 });
 
 // app.get("/about", function(req, res) {
