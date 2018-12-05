@@ -2,6 +2,14 @@ var mongoose = require("mongoose");
 
 var portfolioSchema = new mongoose.Schema({
     title: String,
+    // the portfolio entry's creator's information will be stored here
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    },
     image: {type: String, default: "https://i.kinja-img.com/gawker-media/image/upload/s--gNscB14c--/c_scale,f_auto,fl_progressive,q_80,w_800/18j2u6zfdsj9bjpg.jpg"},
     body: String,
     created: {type: Date, default: Date.now},

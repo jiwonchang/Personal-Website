@@ -1,17 +1,23 @@
 // https://protected-bastion-78480.herokuapp.com/ is the Heroku site
 
 // require installation
-var expressSanitizer = require("express-sanitizer"),
-    methodOverride   = require("method-override"),
-    bodyParser       = require("body-parser"),
-    nodemailer       = require("nodemailer"),
-    mongoose         = require("mongoose"),
-    express          = require("express"),
-    app              = express();
+var passportLocalMongoose = require("passport-local-mongoose"),
+    expressSanitizer      = require("express-sanitizer"),
+    expressSession        = require("express-session"),
+    methodOverride        = require("method-override"),
+    LocalStrategy         = require("passport-local"),
+    flash                 = require("connect-flash"),
+    bodyParser            = require("body-parser"),
+    nodemailer            = require("nodemailer"),
+    mongoose              = require("mongoose"),
+    passport              = require("passport"),
+    express               = require("express"),
+    app                   = express();
     
 // require models from modules
 var Blog = require("./models/blogs");
 var Portfolio = require("./models/portfolios");
+var User = require("./models/user");
     
 // general set-up
 app.set("view engine", "ejs");    
@@ -19,6 +25,30 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
+// app.use(flash);
+app.use(expressSession({
+    secret: process.env.EXPRESS_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// our custom middleware for passing in the currentUser = "req.user" ("undefined" if logged out, else will contain user info) 
+// object into every template/route so that the navbar can access the currentUser object on every page.
+app.use(function(req, res, next) {
+    // whatever we put in "res.locals" becomes available in every template/route/page
+    res.locals.currentUser = req.user;
+    // we also make the flash error message "error" variable accessible in every page that is being rendered
+    // res.locals.error = req.flash("error");
+    // we also make the flash success message "success" variable accessible in every page that is being rendered
+    // res.locals.success = req.flash("success");
+    // The "next()" function is CRUCIAL; if we don't have it, the code will stop after the execution of the middleware
+    next();
+});
 
 // connects our express app to the mongoDB
 // we've set the environment variable DATABASEURL to be the localhost mongo db if we're running the code within cloud 9
@@ -57,13 +87,17 @@ app.get("/portfolio", function(req, res) {
     });
 });
  // NEW portfolio route
-app.get("/portfolio/new", function(req, res) {
+app.get("/portfolio/new", isLoggedIn, function(req, res) {
     res.render("portfolios/new");
 });
  // CREATE portfolio route
-app.post("/portfolio", function(req, res) {
+app.post("/portfolio", isLoggedIn, function(req, res) {
     // req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
     var newPortfolio = req.body.portfolio;
+    newPortfolio.author = {
+        id: req.user._id,
+        username: req.user.username
+    };
     Portfolio.create(newPortfolio, function(err, newlyCreated) {
         if (err) {
             res.redirect("back");
@@ -86,7 +120,7 @@ app.get("/portfolio/:id", function(req, res) {
     });
 });
  // EDIT portfolio route
-app.get("/portfolio/:id/edit", function(req, res) {
+app.get("/portfolio/:id/edit", checkPortfolioOwnership, function(req, res) {
     Portfolio.findById(req.params.id, function(err, foundPortfolio) {
         if (err) {
             res.redirect("back");
@@ -97,7 +131,7 @@ app.get("/portfolio/:id/edit", function(req, res) {
     });
 });
  // UPDATE portfolio route
-app.put("/portfolio/:id", function(req, res) {
+app.put("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
     // req.body.portfolio.body = req.sanitize(req.body.portfolio.body);
     var updatedPortfolio = req.body.portfolio;
     Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio, function(err, editedPortfolio) {
@@ -109,7 +143,7 @@ app.put("/portfolio/:id", function(req, res) {
     });
 });
 // Delete portfolio route
-app.delete("/portfolio/:id", function(req, res) {
+app.delete("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
     Portfolio.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
             res.redirect("back");
@@ -150,13 +184,17 @@ app.get("/blog", function(req, res) {
 // }
 
  // NEW blog route
-app.get("/blog/new", function(req, res) {
+app.get("/blog/new", isLoggedIn, function(req, res) {
     res.render("blogs/new");
 });
  // CREATE blog route
-app.post("/blog", function(req, res) {
+app.post("/blog", isLoggedIn, function(req, res) {
     req.body.blog.body = req.sanitize(req.body.blog.body);
     var newBlog = req.body.blog;
+    newBlog.author = {
+        id: req.user._id,
+        username: req.user.username
+    };
     Blog.create(newBlog, function(err, newlyCreated) {
         if (err) {
             res.redirect("back");
@@ -181,7 +219,7 @@ app.get("/blog/:id", function(req, res) {
     });
 });
  // EDIT blog route
-app.get("/blog/:id/edit", function(req, res) {
+app.get("/blog/:id/edit", checkBlogOwnership, function(req, res) {
     Blog.findById(req.params.id, function(err, foundBlog) {
         if (err) {
             res.redirect("back");
@@ -192,7 +230,7 @@ app.get("/blog/:id/edit", function(req, res) {
     });
 });
  // UPDATE blog route
-app.put("/blog/:id", function(req, res) {
+app.put("/blog/:id", checkBlogOwnership, function(req, res) {
     // req.body.blog.body = req.sanitize(req.body.blog.body);
     var updatedBlog = req.body.blog;
     Blog.findByIdAndUpdate(req.params.id, updatedBlog, function(err, editedBlog) {
@@ -204,7 +242,7 @@ app.put("/blog/:id", function(req, res) {
     });
 });
 
-app.delete("/blog/:id", function(req, res) {
+app.delete("/blog/:id", checkBlogOwnership, function(req, res) {
     Blog.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
             res.redirect("back");
@@ -262,11 +300,119 @@ app.post("/contact", function(req, res) {
     
             // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
             // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-            res.redirect("/");
+            res.redirect("/contact");
         }
     });
 });
 
+
+// Authentication Routes
+ // register route
+app.get("/register", function(req, res) {
+    res.render("register");
+});
+
+ // register logic route (handling user sign up)
+app.post("/register", function(req, res) {
+    User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function() {
+            res.redirect("/");
+        });
+    });
+});
+
+ // login routes
+app.get("/login", function(req, res) {
+    // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
+    // req.session.returnTo = req.originalUrl;
+    res.render("login");
+});
+ 
+  // login logic route
+app.post("/login", passport.authenticate("local", {
+    successReturnToOrRedirect: "/",
+    failureRedirect: "/login"
+}), function(req, res) {
+    // console.log("this is the second print:" + req.session.returnTo);
+    delete req.session.returnTo;
+});
+
+ // logout routes
+app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+});
+
+
+// Middleware
+
+// Our middleware to see if a user is logged in and grant/restrict access accordingly
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    // "req.flash()" displays a message on one page; if the user leaves the page or refreshes the page, the message disappears.
+    // "req.flash()" requires two arguments: a key and a message
+    // "req.flash()" does not display the message on the current page; it always displays the message ON THE NEXT PAGE.
+    // therefore, req.flash() must always be used BEFORE a redirect.
+    // req.flash("error", "You need to be logged in to do that");
+    
+    // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
+    req.session.returnTo = req.originalUrl;
+    // console.log(req.session.returnTo);
+    
+    res.redirect("/login");
+}
+
+// Checks if the current user (if logged in) is the owner of a blog post
+function checkBlogOwnership(req, res, next) {
+    if (req.isAuthenticated()) {
+        Blog.findById(req.params.id, function(err, foundBlog) {
+            if (err) {
+                res.redirect("back");
+            } else {
+                if (foundBlog.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    // redirect
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
+        req.session.returnTo = req.originalUrl;
+        // console.log(req.session.returnTo);
+        res.redirect("/login");
+    }
+}
+
+// Checks if the current user (if logged in) is the owner of a post/entry
+function checkPortfolioOwnership(req, res, next) {
+    if (req.isAuthenticated()) {
+        Portfolio.findById(req.params.id, function(err, foundPortfolio) {
+            if (err) {
+                res.redirect("back");
+            } else {
+                if (foundPortfolio.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    // redirect
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
+        req.session.returnTo = req.originalUrl;
+        // console.log(req.session.returnTo);
+        res.redirect("/login");
+    }
+}
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server Has Launched!");
