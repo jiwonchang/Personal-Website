@@ -215,7 +215,8 @@ app.delete("/portfolio/:id", checkPortfolioOwnership, function(req, res) {
 // blog routes ******************************
  // INDEX blog route
 app.get("/blog", function(req, res) {
-    Blog.find({}, function(err, allBlogs) {
+    // the [],{ sort: { _id: -1 } }, parameters sorts the retrieved data in *descending* order (default is ascending order).
+    Blog.find({}, [], { sort: { _id: -1 } }, function(err, allBlogs) {
         if (err) {
             req.flash("error", "Something went wrong while retrieving all blog posts!");
             res.redirect("back");
@@ -224,8 +225,8 @@ app.get("/blog", function(req, res) {
             // addition to the database will be toward the end of the array; so reversing it makes it so that the array goes
             // newest -> oldest rather than oldest -> newest.
             // but maybe instead of sorting the collection here, we can sort it every once in a while in our CREATE route
-            // res.render("blog", {blogs: allBlogs});
-            res.render("blog", {blogs: allBlogs.reverse()});
+            res.render("blog", {blogs: allBlogs});
+            // res.render("blog", {blogs: allBlogs.reverse()});
         }
     });
 });
