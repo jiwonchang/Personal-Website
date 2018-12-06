@@ -84,6 +84,21 @@ body {
     line-height: 40px;
 }
 
+/* Adds white space to the div. This is to be used when the navbar is transparent in an awkward area like a white area */
+.content-beginning-white-space {
+    /*padding-top: 51px;*/
+    height: 51px;
+}
+/* Adds original navbar color to the white space of the content-beginning-white-space */
+.add-navbar-color {
+    background-color: #72a4c9;
+}
+/* For those pages where a transparent navbar does not fit, we add additional padding-top to the content AFTER the white space
+from content-beginning-white-space*/
+.content-beginning-after-space {
+    padding-top: 19px;
+}
+
 /**************************************/
 /* INDEX PAGE */
 /**************************************/
@@ -245,15 +260,6 @@ body {
 .resume {
     width: 100%;
     height: 100%;
-}
-
-.content-beginning-resume {
-    /*padding-top: 51px;*/
-    height: 51px;
-}
-
-.resume-make-navbar-color {
-    background-color: #72a4c9;
 }
 
 
