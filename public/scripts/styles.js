@@ -16,9 +16,11 @@ $window.on('scroll', function() {
 // makes navbar transparent above a certain point and have color after a certain point of scrolling
 (function ($) {
  $(document).ready(function(){
+   //  "IF NOT A MOBILE DEVICE" (Not limited to changing navbars, but everything else that needs to be done only on a computer!)
    //  ONLY CHANGE NAV BAR TO BE FANCY ON COMPUTERS AND NOT ON MOBILE DEVICES
    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      
+      // add the original navbar background-color to the resume div. Since the resume div has a padding-top which goes under the
+      // fixed-top navbar, the navbar will seem to have a background color ONLY for the resume page.
       $(".resume-div").addClass("resume-make-navbar-color");
       
       // if we refresh the page while we're at a scroll location where the color should have been added, then quickly add the color

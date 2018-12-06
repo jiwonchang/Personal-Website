@@ -120,7 +120,8 @@ body {
 .intro-text {
     position: relative;
     color: white;
-    top: 35%;
+    /*top: 35%;*/
+    top: calc(35% - 2vw);
     font-size: calc(30px + 5.0vw);
 }
 
@@ -132,7 +133,8 @@ body {
 .intro-subtitle {
     position: relative;
     color: white;
-    top: 32%;
+    /*top: 32%;*/
+    top: calc(32% - 2vw);
     font-size: calc(20px + 0.95vw);
 }
 
