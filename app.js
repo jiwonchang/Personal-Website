@@ -83,6 +83,9 @@ app.get("/", function(req, res) {
     
     var titleArray = [{title: "Golden Years in UCSB"}, {title: "The Climb in UC Berkeley"}];
     
+    // finds the blog posts that have a title found in the titleArray. Then, if all posts were found, assigns the posts to
+    // variables. If any posts are missing, then simply keeps the variables as null, which the index page then deals with
+    // accordingly.
     Blog.find({"$or": titleArray}, function(err, results) {
             if (err) {
                 console.log(err);
