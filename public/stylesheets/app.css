@@ -239,6 +239,7 @@ body {
     top:0px;
     left:0px;
     z-index:1000;
+    padding-top: 51px;
 }
 
 .resume {
@@ -247,7 +248,8 @@ body {
 }
 
 .content-beginning-resume {
-    padding-top: 51px;
+    /*padding-top: 51px;*/
+    height: 51px;
 }
 
 .resume-make-navbar-color {

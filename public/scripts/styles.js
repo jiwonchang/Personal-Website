@@ -21,7 +21,7 @@ $window.on('scroll', function() {
    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       // add the original navbar background-color to the resume div. Since the resume div has a padding-top which goes under the
       // fixed-top navbar, the navbar will seem to have a background color ONLY for the resume page.
-      $(".resume-div").addClass("resume-make-navbar-color");
+      $(".content-beginning-resume").addClass("resume-make-navbar-color");
       
       // if we refresh the page while we're at a scroll location where the color should have been added, then quickly add the color
       // into the navbar as soon as the page loads at that point.
