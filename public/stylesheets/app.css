@@ -583,20 +583,30 @@ body {
 /* NAV BAR */
 /**************************************/
 
-/* main navbar background color and border color */
-.navbar-inverse {
+.navbar {
+    background-color: transparent;
+    border: none;
+    transition: background-color 0.5s ease 0s;
+}
+
+.navbar-inverse.solid {
     background-color: #72a4c9;
-    /* the below code renders the navbar transparent... may be useful later... */
-    /* maybe i can use JS to add a class to the navbar to make it transparent until we scroll past a certain point,
-    after which the navbar will become "sticky" and stick to the top of the page */
-    /*background: transparent;*/ 
     border-color: #5982a0;
 }
 
+/* main navbar background color and border color */
+/*.navbar-inverse {*/
+/*    background-color: #72a4c9;*/
+    /* the below code renders the navbar transparent... may be useful later... */
+    /* maybe i can use JS to add a class to the navbar to make it transparent until we scroll past a certain point,
+    after which the navbar will become "sticky" and stick to the top of the page */
+/*    border-color: #5982a0;*/
+/*}*/
+
  /* collapsed (hamburger) navbar border-color */
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #5982a0;
-}
+/*.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {*/
+/*    border-color: #5982a0;*/
+/*}*/
 
 /* main navbar font color */
 .navbar-inverse .navbar-brand {
@@ -612,14 +622,29 @@ body {
     font-size: 18px;
 }
 
-/* main navbar collapse (hamburger) icon border-color */
+/* main navbar collapse (hamburger) icon border-color (transparent/non-existent at start) */
 .navbar-inverse .navbar-toggle {
+    border: none;
+    /*border-color: #72a4c9;*/
+}
+
+/* main navbar collapse (hamburger) icon border-color (gets color once we scroll past a certain point) */
+.navbar-inverse .navbar-toggle.solid {
     border-color: #72a4c9;
 }
 
-/* main navbar collapse (hamburger) background-color on hover */
+/* main navbar collapse (hamburger) background-color on hover (transparent white at start) */
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: #83b3d6;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/*.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover.solid {*/
+/*    background-color: rgba(255,255,255,0.2);*/
+/*}*/
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    /*border-color: #101010;*/
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* makes the navbar icons bigger, but also creates some unneccessary padding to top and bottom */

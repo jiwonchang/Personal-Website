@@ -13,14 +13,83 @@ $window.on('scroll', function() {
    }
 });
 
-// function for changing the index page background 
-// $(function() {
-//     $(window).resize(function() {
-//        if ($(this).width() < 1000) {
-//             $('body').css('background-image', "url('images/background-mobile.svg')");
-//        } else { 
-//             // default setting for desktop here...
-//             $('body').css('background-image', 'none');
-//        }
+(function ($) {
+ $(document).ready(function(){
+   if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+       // hide .navbar first
+      //  $(".navbar").hide();
+      if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
+         $('.navbar').addClass("solid");
+      } else {
+         $('.navbar').removeClass("solid");
+      }
+   
+       // fade in .navbar
+      $(function () {
+         $(window).scroll(function () {
+                // set distance user needs to scroll before we start fadeIn
+            if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
+                $('.navbar').addClass("solid");
+                $('.navbar-inverse .navbartoggle').addClass("solid");
+               //  $('.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover').addClass("solid");
+            } else {
+                $('.navbar').removeClass("solid");
+                $('.navbar-inverse .navbartoggle').removeClass("solid");
+               //  $('.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover').removeClass("solid");
+            }
+         });
+      });
+   } else {
+      $(".navbar").addClass("solid");
+   }
+});
+ }(jQuery));
+
+// (function ($) {
+//  $(document).ready(function(){
+    
+//     // hide .navbar first
+//    //  $(".navbar").hide();
+//    if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
+//       $('.navbar').addClass("solid");
+//    } else {
+//       $('.navbar').removeClass("solid");
+//    }
+
+//     // fade in .navbar
+//     $(function () {
+//        $(window).scroll(function () {
+
+//                 // set distance user needs to scroll before we start fadeIn
+//             if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
+//                 $('.navbar').addClass("solid");
+//             } else {
+//                 $('.navbar').removeClass("solid");
+//             }
+//        });
 //     });
+
 // });
+//  }(jQuery));
+
+// (function ($) {
+//  $(document).ready(function(){
+
+//     // hide .navbar first
+//     $(".navbar").hide();
+
+//     // fade in .navbar
+//     $(function () {
+//        $(window).scroll(function () {
+
+//                 // set distance user needs to scroll before we start fadeIn
+//             if ($(this).scrollTop() > 100) {
+//                 $('.navbar').fadeIn();
+//             } else {
+//                 $('.navbar').fadeOut();
+//             }
+//        });
+//     });
+
+// });
+//  }(jQuery));
