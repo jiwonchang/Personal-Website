@@ -118,7 +118,8 @@ app.get("/resume", function(req, res) {
 // portfolio routes *************************
  // INDEX portfolio routes
 app.get("/portfolio", function(req, res) {
-    Portfolio.find({}, function(err, allPortfolios) {
+    // the [],{ sort: { _id: -1 } }, parameters sorts the retrieved data in *descending* order (default is ascending order).
+    Portfolio.find({}, [], { sort: { _id: -1 } }, function(err, allPortfolios) {
         if (err) {
             req.flash("error", "Something went wrong while retrieving all portfolio entries!");
             res.redirect("back");
@@ -127,8 +128,8 @@ app.get("/portfolio", function(req, res) {
             // addition to the database will be toward the end of the array; so reversing it makes it so that the array goes
             // newest -> oldest rather than oldest -> newest.
             // but maybe instead of sorting the collection here, we can sort it every once in a while in our CREATE route
-            // res.render("blog", {blogs: allBlogs});
-            res.render("portfolio", {portfolios: allPortfolios.reverse()});
+            res.render("portfolio", {portfolios: allPortfolios});
+            // res.render("portfolio", {portfolios: allPortfolios.reverse()});
         }
     });
 });
