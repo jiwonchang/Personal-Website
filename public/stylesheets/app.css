@@ -25,11 +25,14 @@ body {
 
  /* makes the content hidden under the navbar visible by pushing all content down with padding-top */
 .content-beginning {
-    padding-top: 70px;
+    margin-top: 70px;
 }
 
 .flash-message {
-    margin-bottom: -70px;
+    margin-top: 50px;
+    position: relative;
+    margin-bottom: -120px;
+    z-index: 1000;
 }
 
 /* .page-divider gives the pager divider (aka the "-----" and "-----" next to the title of a section)*/
@@ -82,21 +85,6 @@ body {
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
-}
-
-/* Adds white space to the div. This is to be used when the navbar is transparent in an awkward area like a white area */
-.content-beginning-white-space {
-    /*padding-top: 51px;*/
-    height: 51px;
-}
-/* Adds original navbar color to the white space of the content-beginning-white-space */
-.add-navbar-color {
-    background-color: #72a4c9;
-}
-/* For those pages where a transparent navbar does not fit, we add additional padding-top to the content AFTER the white space
-from content-beginning-white-space*/
-.content-beginning-after-space {
-    padding-top: 19px;
 }
 
 /**************************************/
@@ -254,12 +242,15 @@ from content-beginning-white-space*/
     top:0px;
     left:0px;
     z-index:1000;
-    padding-top: 51px;
 }
 
 .resume {
     width: 100%;
     height: 100%;
+}
+
+.content-beginning-resume {
+    padding-top: 50px;
 }
 
 

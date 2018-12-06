@@ -69,13 +69,13 @@
         <div class="container">
             <% if (error && error.length > 0) { %>
                 <!-- This displays the flash message, if it exists, on every page with a header (this saves us a lot of duplication) -->
-                <div class="alert alert-danger content-beginning flash-message" role="alert">
+                <div class="alert alert-danger flash-message" role="alert">
                     <%= error %>
                 </div>
             <% } %>
             <% if (success && success.length > 0) { %>
                 <!-- This displays the flash message, if it exists, on every page with a header (this saves us a lot of duplication) -->
-                <div class="alert alert-success content-beginning flash-message" role="alert">
+                <div class="alert alert-success flash-message" role="alert">
                     <%= success %>
                 </div>
             <% } %>

@@ -27,10 +27,12 @@ $window.on('scroll', function() {
       // into the navbar as soon as the page loads at that point.
       // if we refresh the page while at a scroll location where the nav bar should be transparent, make it transparent as soon as
       // the page loads
-      if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
+      if ($(this).scrollTop() >= $(".background-div").height()) {
+         $('.navbar').css("transition", "background-color 0s ease 0s");
          $('.navbar').addClass("solid");
          $('.navbar-inverse .navbartoggle').addClass("solid");
       } else {
+         $('.navbar').css("transition", "background-color 0s ease 0s");
          $('.navbar').removeClass("solid");
          $('.navbar-inverse .navbartoggle').removeClass("solid");
       }
@@ -40,13 +42,15 @@ $window.on('scroll', function() {
       $(function () {
          $(window).scroll(function () {
                 // set distance user needs to scroll before we start fadeIn
-            if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
-                $('.navbar').addClass("solid");
-                $('.navbar-inverse .navbartoggle').addClass("solid");
+            if ($(this).scrollTop() >= $(".background-div").height()) {
+               $('.navbar').css("transition", "background-color 0.5s ease 0s");
+               $('.navbar').addClass("solid");
+               $('.navbar-inverse .navbartoggle').addClass("solid");
                //  $('.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover').addClass("solid");
             } else {
-                $('.navbar').removeClass("solid");
-                $('.navbar-inverse .navbartoggle').removeClass("solid");
+               $('.navbar').css("transition", "background-color 0.5s ease 0s");
+               $('.navbar').removeClass("solid");
+               $('.navbar-inverse .navbartoggle').removeClass("solid");
                //  $('.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover').removeClass("solid");
             }
          });
