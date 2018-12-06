@@ -20,8 +20,10 @@ $window.on('scroll', function() {
       //  $(".navbar").hide();
       if ($(this).scrollTop() >= $(".background, .portfolio-background, .contact-background, .blog-background").height()) {
          $('.navbar').addClass("solid");
+         $('.navbar-inverse .navbartoggle').addClass("solid");
       } else {
          $('.navbar').removeClass("solid");
+         $('.navbar-inverse .navbartoggle').removeClass("solid");
       }
    
        // fade in .navbar
@@ -41,6 +43,7 @@ $window.on('scroll', function() {
       });
    } else {
       $(".navbar").addClass("solid");
+      $('.navbar-inverse .navbartoggle').addClass("solid");
    }
 });
  }(jQuery));
