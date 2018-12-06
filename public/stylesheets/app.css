@@ -54,6 +54,11 @@ body {
   width: 6%;
 }
 
+.page-divider.short:before,
+.page-divider.short:after {
+    width:3%;
+}
+
 .page-divider:before {
   right: 0.5em;
   margin-left: -50%;
@@ -87,6 +92,28 @@ body {
     line-height: 40px;
 }
 
+.fade-in-text, .delay-fade-in-text {
+    opacity: 0;
+    /*font-size: 21px;*/
+    /*margin-top: 25px;*/
+    /*text-align: center;*/
+
+    /*-webkit-transition: opacity 2s ease-in;*/
+    /*   -moz-transition: opacity 2s ease-in;*/
+    /*    -ms-transition: opacity 2s ease-in;*/
+    /*     -o-transition: opacity 2s ease-in;*/
+    /*        transition: opacity 2s ease-in;*/
+    -webkit-transition: opacity 0.7s ease-in;
+       -moz-transition: opacity 0.7s ease-in;
+        -ms-transition: opacity 0.7s ease-in;
+         -o-transition: opacity 0.7s ease-in;
+            transition: opacity 0.7s ease-in;
+}
+
+.fade-in-text.load, .delay-fade-in-text.load {
+    opacity: 1;
+}
+
 /**************************************/
 /* INDEX PAGE */
 /**************************************/
@@ -101,7 +128,6 @@ body {
  /* the background image / main image of the index page */
 .background {
     background: url("../images/California_beach.jpg");
-    /*background: url("../images/Beach_blur1.jpg");*/
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
@@ -147,6 +173,11 @@ body {
     padding: 4em 0;
 }
 
+.ind-blue-section {
+    /*background-color: #cce2e2;*/
+    background-color: #e1e7f2;
+}
+
  /* selects the picture in the "About Me" section. */
 .about-pic {
     /* makes the picture circular */
@@ -161,8 +192,9 @@ body {
  /* selects the thumbnail picture of the "About Me" section */
 .about-pic.thumbnail {
     /* sets the background color of the picture's frame/border */
-    background-color: #97c3c4;
-    /*background-color: #99a1c9;*/
+    /*background-color: #97c3c4;*/
+    /*background-color: #d0d7e2;*/
+    background-color: #bac3d1;
 }
 
  /* centers image (duh) */
@@ -227,6 +259,17 @@ body {
     color: #3a3a3a;
 }
 
+.my-skill-pic {
+    /* makes the picture circular */
+    border-radius: 20%;
+    /* sets image dimension */
+    /*width: 13em;*/
+    /*height: 13em;*/
+    width: calc(10em + 2vw);
+    height: calc(10em + 2vw);
+    margin-top: 30px;
+    background-color: #ededed;
+}
 
 /**************************************/
 /* RESUME PAGE */
