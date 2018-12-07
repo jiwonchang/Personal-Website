@@ -509,6 +509,14 @@ body {
     margin-right: auto;
 }
 
+.blog-subtitle {
+    position: relative;
+    color: white;
+    top: 32%;
+    font-size: calc(15px + 1.3vw);
+    line-height: 1.5em;
+}
+
 .blog-show-img {
     width: 100%;
 }

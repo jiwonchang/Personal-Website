@@ -69,7 +69,8 @@ $window.on('scroll', function() {
 var bgImgUrlOrg = $('.background-div').css('background-image');
 var bgImgUrl = $('.background-div').css('background-image');
 bgImgUrl = bgImgUrl.replace('url(','').replace(')','').replace(/\"/gi, "");
- // the code below makes a new image based on the background image URL, loads that images, THEN makes the text fade in.
+ // the code below makes a new image based on the background image URL, loads that image, THEN makes the text fade in.
+ // this makes it so that the text doesn't awkwardly fade in before the picture is loaded.
 $('<img/>').attr('src', bgImgUrl).on('load', function() {
    $(this).remove(); // prevent memory leaks as @benweet suggested
    $('background-div').css('background-image', bgImgUrlOrg);
