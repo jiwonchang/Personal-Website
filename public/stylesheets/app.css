@@ -265,10 +265,35 @@ body {
     /* sets image dimension */
     /*width: 13em;*/
     /*height: 13em;*/
-    width: calc(10em + 2vw);
-    height: calc(10em + 2vw);
+    width: calc(6em + 3vw);
+    height: calc(6em + 3vw);
     margin-top: 30px;
     background-color: #ededed;
+}
+
+.my-skill-text {
+    text-align: left;
+    position: relative;
+    display: block;
+}
+
+.my-skill-subtitle {
+    /*font-size: calc(12px + 0.5vw);*/
+    color: #4ba330;
+}
+
+.my-skill-title {
+    /*font-size: calc(16px + 0.7vw);*/
+    line-height: 1.3em;
+    color: #3d76d3;
+    text-align: center; 
+    font-weight: bold; 
+    margin-top: 0;
+}
+
+.my-skill-content {
+    line-height: 1.6em;
+    color: #3a3a3a;
 }
 
 /**************************************/
