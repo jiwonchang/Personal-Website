@@ -368,16 +368,6 @@ body {
     text-align: center;
 }
 
-/* change portfolio background image position when screen width is smaller */
-@media (min-width: 800px) {
-    .portfolio-background {
-        /*background: url('../images/kid_me.png');*/
-        background-position: center -180px;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-}
-
  /* makes it so that the bootstrap columns move onto a new row if the 12 column spaces have been filled, or if the inclusion
  of the new column will exceed that 12 column space. Also used outside of the portfolio page (in the index page, "My background"
  sections, for example). */
@@ -543,6 +533,8 @@ body {
 }
 
 .blog-show-img {
+    display: block;
+    margin: auto;
     width: 100%;
 }
 
@@ -732,6 +724,25 @@ body {
 /*.navbar-icon {*/
 /*    font-size: 25px;*/
 /*}*/
+
+
+/* media query for when the screen is ABOVE a certain width/size */
+@media (min-width: 800px) {
+    .portfolio-background {
+        /* change portfolio background image position when screen width is bigger */
+        /*background: url('../images/kid_me.png');*/
+        background-position: center -180px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    /* restricts the height (and size) of the blog show image if it's too big and we are on a larger screen */
+    /*.blog-show-img {*/
+    /*    max-height: 40em;*/
+    /*    width: initial;*/
+    /*}*/
+}
+
 
 /*@media (max-width: 500px) {*/
 @media (max-width: 700px) {
