@@ -321,6 +321,48 @@ body {
     padding-top: 50px;
 }
 
+.resume-div-center-btn {
+    position: relative;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+.resume-btn-desc {
+    display: none;
+}
+
+.resume-btn-desc-active {
+    display: block;
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    margin-top: -9.5px;
+    margin-left: -124.7px;
+}
+
+.resume-btn-div {
+    display: none;
+}
+
+.resume-btn-div-active {
+    display: block;
+    /*position: relative;*/
+}
+
+.resume-btn {
+    display: none;
+}
+
+.resume-btn-active {
+    display: inline-block;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    margin-left: -84.9px;
+    margin-top: -23px;
+}
+
 
 /**************************************/
 /* ABOUT PAGE */
@@ -808,4 +850,5 @@ body {
     .fill-out-form {
         width: 90% !important;
     }
+    
 }

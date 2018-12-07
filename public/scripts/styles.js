@@ -81,7 +81,7 @@ $('<img/>').attr('src', bgImgUrl).on('load', function() {
    setTimeout(
       function() {
        $(".delay-fade-in-text").addClass("load");
-      }, 700);
+      }, 1000);
 });
  // the below code is an alternate, perhaps less efficient method for waiting until background image is loaded before fade-in:
 // var image = new Image();
@@ -99,7 +99,6 @@ $('<img/>').attr('src', bgImgUrl).on('load', function() {
 //       }, 700);
 // }
 
-
 // code for making the text fade in (without waiting for image to load)
 // $(".fade-in-text").addClass("load");
  
@@ -108,3 +107,13 @@ $('<img/>').attr('src', bgImgUrl).on('load', function() {
 //    function() {
 //     $(".delay-fade-in-text").addClass("load");
 //    }, 700);
+
+if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+   //  $('.background').css('margin-top', $(window).scrollTop() * .3);
+   $('.resume-div .resume').css('display', 'none');
+   // $('.resume-div').addClass('resume-div-center-btn');
+   //  $('.resume-div').css({'display': 'flex', 'align-items': 'center', 'justify-content': 'center'});
+   $('.resume-btn-desc').addClass('resume-btn-desc-active');
+   $('.resume-btn-div').addClass('resume-btn-div-active');
+   $('.resume-div .resume-btn').addClass('resume-btn-active');
+}
