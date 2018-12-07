@@ -108,7 +108,7 @@ $('<img/>').attr('src', bgImgUrl).on('load', function() {
 //     $(".delay-fade-in-text").addClass("load");
 //    }, 700);
 
-if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
    //  $('.background').css('margin-top', $(window).scrollTop() * .3);
    $('.resume-div .resume').css('display', 'none');
    // $('.resume-div').addClass('resume-div-center-btn');
