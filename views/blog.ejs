@@ -1,7 +1,10 @@
 <% include ./partials/header %>
 
 <div id="about-intro-photo" class="sixteen wide column">
-    <div class="blog-background parallax background-div">
+    <!-- the "background-div" is there to compare the div's height against the scroll-top measurement, so that the nav bar can
+	fade-in when scroll-height >= background-div's height.-->
+	<!-- the "background-img" is there to show that this page HAS a background image. -->
+    <div class="blog-background parallax background-div background-img">
         <div class="layer">
             <div class="about-intro-text fade-in-text">My Blog</div>
             <h2 class="blog-subtitle delay-fade-in-text">A place for thoughts, dreams, and memories.</h2>
@@ -19,7 +22,7 @@
     <div class="row flex" style="padding-top: 2em">
         <% blogs.forEach(function(blog) { %>
             <div class="col-lg-4 col-sm-6 col-xs-12">
-    			<div class="thumbnail" style="border:none">
+    			<div class="thumbnail blog-thumb-fx" style="border:none">
     				<!--<img class="thumb-img" src="/images/enigma.jpg">-->
     				<a href="/blog/<%= blog._id %>"><img class="blog-img" src="<%= blog.image %>"></a>
     				<div class="caption">

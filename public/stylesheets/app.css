@@ -422,6 +422,16 @@ body {
     color: #7c7c7c;
 }
 
+.portfolio-thumb-fx {
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+    transition: all .2s linear;
+}
+
+.portfolio-thumb-fx:hover {
+    box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+    transform: translate3D(0, -2px, 0);
+}
+
 .portfo-thumb-limit {
     max-height: 230px;
     overflow-y: hidden;
@@ -576,6 +586,17 @@ body {
     top: 32%;
     font-size: calc(15px + 1.3vw);
     line-height: 1.5em;
+}
+
+.blog-thumb-fx {
+    /*box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);*/
+    transition: all .2s linear;
+}
+
+.blog-thumb-fx:hover {
+    box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+    /*transform: translate3D(0, -2px, 0);*/
+    transform: translate3D(0, -4px, 0);
 }
 
 .blog-show-img {

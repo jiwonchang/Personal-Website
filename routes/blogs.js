@@ -65,6 +65,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 });
  // SHOW blog route
 router.get("/:id", function(req, res) {
+    // console.log(req.params.id);
     Blog.findById(req.params.id, function(err, foundBlog) {
         if (err) {
             req.flash("error", "That blog post does not exist!");

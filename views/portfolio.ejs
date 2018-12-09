@@ -1,7 +1,10 @@
 <% include ./partials/header %>
 
 <div id="intro_photo">
-    <div class="portfolio-background parallax background-div">
+	<!-- the "background-div" is there to compare the div's height against the scroll-top measurement, so that the nav bar can
+	fade-in when scroll-height >= background-div's height.-->
+	<!-- the "background-img" is there to show that this page HAS a background image. -->
+    <div class="portfolio-background parallax background-div background-img">
         <div class="layer">
             <div class="about-intro-text fade-in-text"><i class="fa fa-folder-open-o" aria-hidden="true"></i> My Portfolio</div>
             <p class="p contact-subtitle delay-fade-in-text"><small>Some of the work I've done!</small></p>
@@ -25,7 +28,7 @@
     	<% portfolios.forEach(function(portfolio) { %>
     		<% if (portfolio.type === "Work") { %>
 		        <div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="thumbnail">
+					<div class="thumbnail portfolio-thumb-fx">
 						<a href="/portfolio/<%= portfolio._id %>"><img class="thumb-img" src="<%= portfolio.image %>"></a>
 						<div class="caption">
 							<p><%= portfolio.created.toDateString() %></p>
@@ -50,7 +53,7 @@
     	<% portfolios.forEach(function(portfolio) { %>
     		<% if (portfolio.type === "Art") { %>
 		        <div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="thumbnail">
+					<div class="thumbnail portfolio-thumb-fx">
 						<div class="portfo-thumb-limit">
 							<!-- the href source of "javascript:;" keeps the page on its current scroll position, rather than
 							jumping to the top of the page (as it did when href="#") -->

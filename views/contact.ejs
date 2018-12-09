@@ -1,7 +1,10 @@
 <% include ./partials/header %>
 
 <div id="about-intro-photo" class="sixteen wide column">
-    <div class="contact-background parallax background-div" style="overflow: hidden">
+    <!-- the "background-div" is there to compare the div's height against the scroll-top measurement, so that the nav bar can
+	fade-in when scroll-height >= background-div's height.-->
+	<!-- the "background-img" is there to show that this page HAS a background image. -->
+    <div class="contact-background parallax background-div background-img" style="overflow: hidden">
         <div class="layer">
             <div class="contact-intro-text contact-text fade-in-text"><i class="fa fa-handshake-o" aria-hidden="true"></i> Contact Me</div>
             <p class="p contact-subtitle contact-text delay-fade-in-text"><small>Let's get Awesome together.</small></p>

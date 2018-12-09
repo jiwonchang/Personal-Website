@@ -66,23 +66,34 @@ $window.on('scroll', function() {
 // makes the text fade in AFTER the background image has been loaded
  // the code immediately below selects the background div's background image URL and stores it in a variable, then removes the
  // "url(" and ")" that "background-image" style requires.
-var bgImgUrlOrg = $('.background-div').css('background-image');
-var bgImgUrl = $('.background-div').css('background-image');
-bgImgUrl = bgImgUrl.replace('url(','').replace(')','').replace(/\"/gi, "");
- // the code below makes a new image based on the background image URL, loads that image, THEN makes the text fade in.
- // this makes it so that the text doesn't awkwardly fade in before the picture is loaded.
-$('<img/>').attr('src', bgImgUrl).on('load', function() {
-   $(this).remove(); // prevent memory leaks as @benweet suggested
-   $('background-div').css('background-image', bgImgUrlOrg);
-   // code, run after image load
-   $(".fade-in-text").addClass("load");
-    
-   // delay for 0.7 seconds to fade in subtitles
-   setTimeout(
-      function() {
-       $(".delay-fade-in-text").addClass("load");
-      }, 1000);
-});
+//  ***IMPORTANT: THIS CODE CREATES AN ERROR IF THERE IS *NO* BACKGROUND IMAGE IN THE PAGE. THUS, WE CHECK IF AN ELEMENT WITH THE
+// CLASS "BACKGROUND-IMG" EXISTS IN THE PAGE BY COUNTING THE NUMBER OF ELEMENTS THAT MATCH THE SELECTOR $(".BACKGROUND-IMG") WITH
+// THE .LENGTH ATTRIBUTE. NOW, ON MY PART, ONLY THE DIVS WITH A BACKGROUND IMAGE WILL HAVE THE "BACKGROUND-IMAGE" CLASS.
+if ($(".background-img").length) {
+   // the immediate below code (dealing with var test) adds styles and appends a text/content "div" to the body (AS A TEST) if the
+   // above boolean is true. THIS IS A ROUGH WAY OF TESTING.
+   // var test = $("body").append("div");
+   // test.css("height", "500px");
+   // test.css("width", "600px");
+   // test.css("background", "black");
+   var bgImgUrlOrg = $('.background-img').css('background-image');
+   var bgImgUrl = $('.background-img').css('background-image');
+   bgImgUrl = bgImgUrl.replace('url(','').replace(')','').replace(/\"/gi, "");
+    // the code below makes a new image based on the background image URL, loads that image, THEN makes the text fade in.
+    // this makes it so that the text doesn't awkwardly fade in before the picture is loaded.
+   $('<img/>').attr('src', bgImgUrl).on('load', function() {
+      $(this).remove(); // prevent memory leaks as @benweet suggested
+      $('background-img').css('background-image', bgImgUrlOrg);
+      // code, run after image load
+      $(".fade-in-text").addClass("load");
+       
+      // delay for 0.7 seconds to fade in subtitles
+      setTimeout(
+         function() {
+          $(".delay-fade-in-text").addClass("load");
+         }, 1000);
+   });
+}
  // the below code is an alternate, perhaps less efficient method for waiting until background image is loaded before fade-in:
 // var image = new Image();
 // image.src = bgImgUrl;
