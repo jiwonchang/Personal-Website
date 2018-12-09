@@ -773,6 +773,10 @@ body {
     border-color: #72a4c9;
 }
 
+.nav-brand {
+    font-size: 30px;
+}
+
 /* main navbar collapse (hamburger) background-color on hover (transparent white at start) */
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
     background-color: rgba(255, 255, 255, 0.2);
