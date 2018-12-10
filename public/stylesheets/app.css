@@ -605,6 +605,12 @@ body {
     width: 100%;
 }
 
+.blog-img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
  /* the descriptive text below the blog show page main image */
 .blog-img-desc {
     font-size: calc(14px + 0.4vw);
