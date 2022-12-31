@@ -1,5 +1,8 @@
 #ignore all env files
 *.env
 
+#ignore all npm packages
+node_modules
+
 #ignore the lessons file
 lessons.md
