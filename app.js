@@ -75,6 +75,7 @@ app.use(contactRoutes);
 app.use(resumeRoutes);
 app.use(authRoutes);
 
+// heroku will provide its own process.env.PORT (usually port 80)
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server Has Launched!");
 });
