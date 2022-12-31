@@ -32,8 +32,8 @@ var portfolioRoutes = require("./routes/portfolios"),
 // connects our express app to the mongoDB
 // we've set the environment variable DATABASEURL to be the localhost mongo db if we're running the code within cloud 9
 // otherwise, we've set DATABASEURL to be the MongoLab/MLab Database
-var dbURL = process.env.DATABASEURL || "mongodb://localhost/p_web";
-mongoose.connect(dbURL, {useNewUrlParser: true});
+var dbURL = process.env.DATABASEURL || "mongodb://localhost:27017/p_web";
+mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // general set-up
 app.set("view engine", "ejs");    
