@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
     res.locals.error = req.flash("error");
     // we also make the flash success message "success" variable accessible in every page that is being rendered
     res.locals.success = req.flash("success");
-    // The "next()" function is CRUCIAL; if we don't have it, the code will stop after the execution of the middleware
+    // The "next()" function is CRUCIAL; if we don't have it, the code will stop after the execution of the middleware 
     next();
 });
 
