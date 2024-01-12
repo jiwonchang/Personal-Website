@@ -13,29 +13,31 @@
 </div>
 
 <!-- will need to put all the blog post data into a database; will also need to have a way to easily create blog posts -->
-<div class="container">
-    
-    <% if (currentUser) { %>
-    	<a type="button" class="btn btn-primary btn-lg" href="/blog/new" style="margin-top: 2em">Create New Post</a>
-    <% } %>
-    
-    <div class="row flex" style="padding-top: 2em">
-        <% blogs.forEach(function(blog) { %>
-            <div class="col-lg-4 col-sm-6 col-xs-12">
-    			<div class="thumbnail blog-thumb-fx" style="border:none">
-    				<!--<img class="thumb-img" src="/images/enigma.jpg">-->
-    				<a href="/blog/<%= blog._id %>"><img class="blog-img" src="<%= blog.image %>"></a>
-    				<div class="caption">
-    				    <p style="color: gray"><span><%= blog.category %> &bull; <%= blog.created.toDateString() %></span></p>
-    				    <a href="/blog/<%= blog._id %>"><h3 style="margin-top: 0"><%= blog.title %></h3></a>
-                        <p><%- blog.body.substring(0, 100) + "..." %></p>
-                        <a type="button" class="btn btn-success" href="/blog/<%= blog._id %>">Read More</a>
-    				</div>
-    			</div>
-    		</div>
-    	<% }); %>
-	</div>
-    
+<div class="blog-div">
+    <div class="container">
+        
+        <% if (currentUser) { %>
+            <a type="button" class="btn btn-primary btn-lg" href="/blog/new" style="margin-top: 2em">Create New Post</a>
+        <% } %>
+        
+        <div class="row flex" style="padding-top: 2em">
+            <% blogs.forEach(function(blog) { %>
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="blog-thumbnail thumbnail blog-thumb-fx" style="border:none">
+                        <!--<img class="thumb-img" src="/images/enigma.jpg">-->
+                        <a href="/blog/<%= blog._id %>"><img class="blog-img" src="<%= blog.image %>"></a>
+                        <div class="blog-thumb-caption caption">
+                            <p style="color: gray"><span><%= blog.category %> &bull; <%= blog.created.toDateString() %></span></p>
+                            <a href="/blog/<%= blog._id %>"><h3 style="margin-top: 0"><%= blog.title %></h3></a>
+                            <p><%- blog.body.substring(0, 100) + "..." %></p>
+                            <a type="button" class="btn btn-success" href="/blog/<%= blog._id %>">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        
+    </div>
 </div>
 
 <% include ./partials/footer %>

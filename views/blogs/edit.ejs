@@ -3,51 +3,53 @@
 <% var categories = ["Thoughts", "Opinion", "Life", "Lessons", "Advice", "Food", "Tech", "Art", "Music", "Sports", "Random"]; %>
 
 <div class="background-div"></div>
-<div class="container content-beginning">
-    <div class="row">
-        <h1 style="text-align: center;">Edit <%= blog.name %></h1>
-        
-        <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
-            <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
-                <!-- the form-group class divs add spacing between the items in the form -->
-                <div class="form-group">
-                    <select class="form-control" name="blog[category]" type="text" id="blog-category" required>
-                        <!-- the JS code "(blog.category == 'Thoughts') ? 'selected' : ''" makes it so that if the blog.category
-                        value is the same as that of the given option, the app will add the "selected" class to that <option> tag.
-                        And thus when the edit screen is opened, the category that was previously chosen is already selected.-->
-                        <!-- the following code is equivalent to the code below that -->
-                        <% categories.forEach(function(category) { %>
-                            <option value=<%= category %>  <%= (blog.category == category) ? 'selected' : '' %>><%= category %>
-                            </option>
-                        <% }); %>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[title]" type="text" value="<%= blog.title %>" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[image]" type="text" value="<%= blog.image %>" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[image_desc]" type="text" placeholder="Image description"
-                    value="<%= blog.image_desc %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[video]" type="text" placeholder="Video URL" value="<%= blog.video %>">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control textarea-lg" name="blog[body]" required><%= blog.body %></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
-                </div>
-            </form>
+<div class="new-edit-blog-div">
+    <div class="container content-beginning">
+        <div class="row">
+            <h1 style="text-align: center;">Edit <%= blog.name %></h1>
             
-            <a href="/blog/<%= blog._id %>">Go Back</a>
+            <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
+                <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
+                    <!-- the form-group class divs add spacing between the items in the form -->
+                    <div class="form-group">
+                        <select class="form-control" name="blog[category]" type="text" id="blog-category" required>
+                            <!-- the JS code "(blog.category == 'Thoughts') ? 'selected' : ''" makes it so that if the blog.category
+                            value is the same as that of the given option, the app will add the "selected" class to that <option> tag.
+                            And thus when the edit screen is opened, the category that was previously chosen is already selected.-->
+                            <!-- the following code is equivalent to the code below that -->
+                            <% categories.forEach(function(category) { %>
+                                <option value=<%= category %>  <%= (blog.category == category) ? 'selected' : '' %>><%= category %>
+                                </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[title]" type="text" value="<%= blog.title %>" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[image]" type="text" value="<%= blog.image %>" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[image_desc]" type="text" placeholder="Image description"
+                        value="<%= blog.image_desc %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[video]" type="text" placeholder="Video URL" value="<%= blog.video %>">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control textarea-lg" name="blog[body]" required><%= blog.body %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
+                    </div>
+                </form>
+                
+                <a href="/blog/<%= blog._id %>">Go Back</a>
+            </div>
+            
         </div>
         
     </div>
-    
 </div>
 
 <% include ../partials/footer %>

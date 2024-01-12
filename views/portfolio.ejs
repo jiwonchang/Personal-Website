@@ -13,66 +13,68 @@
 </div>
 
 <!--<div class="container content-beginning">-->
-<div class="container">
-    
-    <% if (currentUser) { %>
-    	<a type="button" class="btn btn-primary btn-lg" href="/portfolio/new" style="margin-top: 20px">Create New Entry</a>
-    <% } %>
-    
-    <h1>Software Projects</h1>
-    <p class="small">Projects ranging from university course projects to personal side projects</p>
-    
-    <hr>
-    
-    <div class="row flex">
-    	<% portfolios.forEach(function(portfolio) { %>
-    		<% if (portfolio.type === "Work") { %>
-		        <div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="thumbnail portfolio-thumb-fx">
-						<a href="/portfolio/<%= portfolio._id %>"><img class="thumb-img" src="<%= portfolio.image %>"></a>
-						<div class="caption">
-							<p><%= portfolio.created.toDateString() %></p>
-						    <a href="/portfolio/<%= portfolio._id %>"><h3 style="margin-top: 0"><%= portfolio.title %></h3></a>
-		                    <p><%- portfolio.body.substring(0, 100) + "..." %></p>
-		                    <a type="button" class="btn btn-success" href="/portfolio/<%= portfolio._id %>">Read More</a>
+<div class="portfolio-div">
+	<div class="container">
+		
+		<% if (currentUser) { %>
+			<a type="button" class="btn btn-primary btn-lg" href="/portfolio/new" style="margin-top: 20px">Create New Entry</a>
+		<% } %>
+		
+		<h1 class="portfolio-section-title">Software Projects</h1>
+		<p class="portfolio-section-subtitle small">Projects ranging from university course projects to personal side projects</p>
+		
+		<hr>
+		
+		<div class="row flex">
+			<% portfolios.forEach(function(portfolio) { %>
+				<% if (portfolio.type === "Work") { %>
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+						<div class="portfolio-thumbnail thumbnail portfolio-thumb-fx">
+							<a href="/portfolio/<%= portfolio._id %>"><img class="thumb-img" src="<%= portfolio.image %>"></a>
+							<div class="portfolio-thumb-caption caption">
+								<p><%= portfolio.created.toDateString() %></p>
+								<a href="/portfolio/<%= portfolio._id %>"><h3 style="margin-top: 0"><%= portfolio.title %></h3></a>
+								<p><%- portfolio.body.substring(0, 100) + "..." %></p>
+								<a type="button" class="btn btn-success" href="/portfolio/<%= portfolio._id %>">Read More</a>
+							</div>
 						</div>
 					</div>
-				</div>
-			<% } %>
-		<% }); %>
-    </div>
-    
-    <hr>
+				<% } %>
+			<% }); %>
+		</div>
+		
+		<hr>
 
-    <h1>Artwork</h1>
-    <p class="small">"Art is the highest form of human expression"</p>
-    
-    <hr>
-    
-    <div class="row flex">
-    	<% portfolios.forEach(function(portfolio) { %>
-    		<% if (portfolio.type === "Art") { %>
-		        <div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="thumbnail portfolio-thumb-fx">
-						<div class="portfo-thumb-limit">
-							<!-- the href source of "javascript:;" keeps the page on its current scroll position, rather than
-							jumping to the top of the page (as it did when href="#") -->
-							<a href="javascript:;" class="pop">
-								<img class="imageresource" src="<%= portfolio.image %>">
-								<!--Click to Enlarge-->
+		<h1 class="portfolio-section-title">Artwork</h1>
+		<p class="portfolio-section-subtitle small">"Art is the highest form of human expression"</p>
+		
+		<hr>
+		
+		<div class="row flex">
+			<% portfolios.forEach(function(portfolio) { %>
+				<% if (portfolio.type === "Art") { %>
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+						<div class="portfolio-thumbnail thumbnail portfolio-thumb-fx">
+							<div class="portfo-thumb-limit">
+								<!-- the href source of "javascript:;" keeps the page on its current scroll position, rather than
+								jumping to the top of the page (as it did when href="#") -->
+								<a href="javascript:;" class="pop">
+									<img class="imageresource" src="<%= portfolio.image %>">
+									<!--Click to Enlarge-->
+								</a>
+							</div>
+							<a type="button" class="btn btn-success" href="/portfolio/<%= portfolio._id %>"
+							style="margin-top: 7px; margin-bottom: 2px">
+								Read More
 							</a>
 						</div>
-						<a type="button" class="btn btn-success" href="/portfolio/<%= portfolio._id %>"
-						style="margin-top: 7px; margin-bottom: 2px">
-							Read More
-						</a>
 					</div>
-				</div>
-			<% } %>
-		<% }); %>
+				<% } %>
+			<% }); %>
+		</div>
+		
+		
 	</div>
-    
-    
 </div>
 
 <!-- Creates the bootstrap modal where the image will appear -->

@@ -1,41 +1,43 @@
 <% include ../partials/header %>
 
 <div class="background-div"></div>
-<div class="container content-beginning">
-    <div class="row">
-        <h1 style="text-align: center;">Create A New Portfolio Work</h1>
-        
-        <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
-            <form action="/portfolio" method="POST">
-                <!-- the form-group class divs add spacing between the items in the form -->
-                <div class="form-group">
-                    <select class="form-control" name="portfolio[type]" type="text" required>
-                        <option value="Work">Work</option>
-                        <option value="Art">Art</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="portfolio[title]" type="text" placeholder="Title of New Post" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="portfolio[image]" type="text" placeholder="image url" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="portfolio[created]" type="date" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control textarea-lg" name="portfolio[body]" placeholder="Write something interesting here..." required></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
-                </div>
-            </form>
+<div class="new-edit-portfolio-div">
+    <div class="container content-beginning">
+        <div class="row">
+            <h1 style="text-align: center;">Create A New Portfolio Work</h1>
             
-            <a href="/portfolio">Go Back</a>
+            <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
+                <form action="/portfolio" method="POST">
+                    <!-- the form-group class divs add spacing between the items in the form -->
+                    <div class="form-group">
+                        <select class="form-control" name="portfolio[type]" type="text" required>
+                            <option value="Work">Work</option>
+                            <option value="Art">Art</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="portfolio[title]" type="text" placeholder="Title of New Post" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="portfolio[image]" type="text" placeholder="image url" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="portfolio[created]" type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control textarea-lg" name="portfolio[body]" placeholder="Write something interesting here..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
+                    </div>
+                </form>
+                
+                <a href="/portfolio">Go Back</a>
+            </div>
+            
         </div>
         
     </div>
-    
 </div>
 
 <% include ../partials/footer %>

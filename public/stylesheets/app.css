@@ -25,7 +25,8 @@ body {
 
  /* makes the content hidden under the navbar visible by pushing all content down with padding-top */
 .content-beginning {
-    margin-top: 70px;
+    /* margin-top: 70px; */
+    padding-top: 70px;
 }
 
 .flash-message {
@@ -44,7 +45,8 @@ body {
 .page-divider:before,
 .page-divider:after {
   /*background-color: #000;*/
-  background-color: #383838;
+  /* background-color: #383838; */
+  background-color: #dfdfdf;
   content: "";
   display: inline-block;
   height: 1px;
@@ -127,7 +129,9 @@ body {
 
  /* the background image / main image of the index page */
 .background {
-    background: url("../images/California_beach.jpg");
+    /* background: url("../images/California_beach.jpg"); */
+    background: url("../images/Osaka_Tower.jpeg");
+    /* background: url("../images/osaka_trip_blurred.jpeg"); */
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
@@ -139,11 +143,37 @@ body {
 
  /* makes the transparent, darker layer above the picture (for better overlay word legibility) */
 .layer {
-    background-color: rgba(20,30,10,0.2);
+    /* background-color: rgba(20,30,10,0.2); */
+    background-color: rgba(20,30,10,0.08);
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.intro-div {
+    background-color: #121212;
+    color: #dfdfdf;
+}
+
+.intro-text-div {
+    user-select: none;
+}
+
+.intro-title-div {
+    position: relative;
+    top: calc(35% - 2vw);
+}
+
+.intro-greeting-text {
+    position: relative;
+    color: white;
+    /*top: 35%;*/
+    top: calc(35% - 2vw);
+    /* font-size: calc(10px + 1.5vw); */
+    /* font-size: min(calc(10px + 1.5vw), 40px); */
+    font-size: min(calc(18px + 2vw), 40px);
+    font-style: italic;
 }
 
 .intro-text {
@@ -151,7 +181,10 @@ body {
     color: white;
     /*top: 35%;*/
     top: calc(35% - 2vw);
-    font-size: calc(30px + 5.0vw);
+    /* font-size: calc(30px + 5.0vw); */
+    /* font-size: min(calc(30px + 5.0vw), 100px); */
+    font-size: min(calc(20px + 4.0vw), 100px);
+    line-height: 1.0;
 }
 
 .intro-text span {
@@ -163,8 +196,11 @@ body {
     position: relative;
     color: white;
     /*top: 32%;*/
-    top: calc(32% - 2vw);
-    font-size: calc(20px + 0.95vw);
+    /* top: calc(32% - 2vw); */
+    top: calc(36% - 2vw);
+    /* font-size: min(calc(20px + 0.95vw), 50px); */
+    font-size: min(calc(12px + 1.4vw), 30px);
+    margin-top: min(20px, calc(5px + 1vw));
 }
 
  /* selects each of the index page's sections (after the main picture) */
@@ -175,7 +211,8 @@ body {
 
 .ind-blue-section {
     /*background-color: #cce2e2;*/
-    background-color: #e1e7f2;
+    /* background-color: #e1e7f2; */
+    background-color: #292e36;
 }
 
  /* selects the picture in the "About Me" section. */
@@ -224,7 +261,8 @@ body {
     /*top: 30%;*/
     /* the line height "centers" the text vertically and also makes the text easier to see */
     line-height: calc(25px + 1vw);
-    font-size: calc(15px + 0.6vw);
+    /* font-size: calc(15px + 0.6vw); */
+    font-size: min(calc(15px + 0.6vw), 25px);
 }
 
 .my-bg-pic {
@@ -256,7 +294,8 @@ body {
 
 .my-bg-content {
     line-height: 1.6em;
-    color: #3a3a3a;
+    /* color: #3a3a3a; */
+    color: #dfdfdf;
 }
 
 .my-skill-pic {
@@ -293,7 +332,8 @@ body {
 
 .my-skill-content {
     line-height: 1.6em;
-    color: #3a3a3a;
+    /* color: #3a3a3a; */
+    color: #dfdfdf;
 }
 
 /**************************************/
@@ -393,7 +433,8 @@ body {
     position: relative;
     color: white;
     top: 35%;
-    font-size: calc(30px + 5.5vw);
+    /* font-size: calc(30px + 5.5vw); */
+    font-size: min(calc(20px + 5.5vw), 100px);
     line-height: 1em;
 }
 
@@ -410,6 +451,18 @@ body {
     text-align: center;
 }
 
+.portfolio-div {
+    background-color: #121212;
+}
+
+.portfolio-section-title {
+    color: #adadad;
+}
+
+.portfolio-section-subtitle {
+    color: #919191;
+}
+
  /* makes it so that the bootstrap columns move onto a new row if the 12 column spaces have been filled, or if the inclusion
  of the new column will exceed that 12 column space. Also used outside of the portfolio page (in the index page, "My background"
  sections, for example). */
@@ -420,6 +473,11 @@ body {
 .small {
     font-size: 18px;
     color: #7c7c7c;
+}
+
+.portfolio-thumbnail {
+    background-color: #292e36;
+    border: 1px solid #292e36;
 }
 
 .portfolio-thumb-fx {
@@ -435,6 +493,11 @@ body {
 .portfo-thumb-limit {
     max-height: 230px;
     overflow-y: hidden;
+}
+
+.thumbnail .portfolio-thumb-caption {
+    /* color: #dfdfdf; */
+    color: #8d8d8d;
 }
 
 .imageresource {
@@ -498,10 +561,53 @@ body {
 
  /* the descriptive text below the blog show page main image */
 .portfolio-img-desc {
-    font-size: calc(14px + 0.4vw);
+    /* font-size: calc(14px + 0.4vw); */
+    font-size: min(calc(14px + 0.4vw), 18px);
     font-style: italic;
     margin-top: 10px;
     margin-bottom: 0;
+}
+
+/**************************************/
+/* PORTFOLIO NEW / EDIT PAGE */
+/**************************************/
+
+.new-edit-portfolio-div {
+    height: 100%;
+    background-color: #121212;
+    color: #dfdfdf;
+    /* background-color: #222222; */
+}
+
+.new-edit-portfolio-div select {
+    /* background-color: #121212; */
+    background-color: #222222;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+}
+
+.new-edit-portfolio-div input {
+    /* background-color: #121212; */
+    background-color: #222222;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+    color-scheme: dark;
+}
+
+.new-edit-portfolio-div textarea {
+    /* background-color: #121212; */
+    background-color: #222222;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+}
+
+/**************************************/
+/* PORTFOLIO SHOW PAGE */
+/**************************************/
+
+.portfolio-show-div {
+    background-color: #121212;
+    min-height: 100%;
 }
 
 .portfolio-date {
@@ -510,12 +616,14 @@ body {
     width: 70%; 
     margin: 10px auto 0 auto;
     padding-bottom: 0;
-    color: gray;
+    /* color: gray; */
+    color: #ababab;
 }
 
 .portfolio-title {
     /*font-size: 50px;*/
-    font-size: calc(20px + 1.8vw);
+    /* font-size: calc(20px + 1.8vw); */
+    font-size: min(calc(20px + 1.8vw), 50px);
     font-weight: 700;
     /*width: 60%; */
     width: 70%;
@@ -523,6 +631,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    color: #dfdfdf;
 }
 
 /* the div containing the body */
@@ -530,18 +639,22 @@ body {
     /*width: 60%;*/
     width: 70%;
     margin: 25px auto;
+    color: #a3a3a3;
 }
 
 .portfolio-body {
     margin: 30px 0;
-    font-size: calc(15px + 0.4vw);
-    line-height: calc(20px + 1.1vw);
+    /* font-size: calc(15px + 0.4vw); */
+    font-size: min(calc(15px + 0.4vw), 20px);
+    /* line-height: calc(20px + 1.1vw); */
+    line-height: min(calc(20px + 1.1vw), 40px);
 }
 
  /* gives the paragraphs found inside the .portfolio-body div have more spaces between the paragraphs */
 .portfolio-body p {
     /*margin-bottom: 20px;*/
-    margin-bottom: calc(10px + 0.7vw);
+    /* margin-bottom: calc(10px + 0.7vw); */
+    margin-bottom: min(calc(10px + 0.7vw), 30px);
 }
 
 .portfolio-body img {
@@ -569,15 +682,21 @@ body {
     text-align: center;
 }
 
+.blog-div {
+    background-color: #121212;
+}
+
 .blog-title {
     /*font-size: 50px;*/
-    font-size: calc(20px + 1.8vw);
+    /* font-size: calc(20px + 1.8vw); */
+    font-size: min(calc(20px + 1.8vw), 50px);
     font-weight: 700;
     /*width: 60%; */
     width: 70%;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
+    color: #dfdfdf;
 }
 
 .blog-subtitle {
@@ -586,6 +705,13 @@ body {
     top: 32%;
     font-size: calc(15px + 1.3vw);
     line-height: 1.5em;
+}
+
+.blog-thumbnail {
+    /* background-color: #292e36;
+    border: 1px solid #292e36; */
+    background-color: #121212;
+    border: 1px solid #121212;
 }
 
 .blog-thumb-fx {
@@ -597,6 +723,10 @@ body {
     box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
     /*transform: translate3D(0, -2px, 0);*/
     transform: translate3D(0, -4px, 0);
+}
+
+.thumbnail .blog-thumb-caption {
+    color: #8d8d8d;
 }
 
 .blog-show-img {
@@ -613,20 +743,64 @@ body {
 
  /* the descriptive text below the blog show page main image */
 .blog-img-desc {
-    font-size: calc(14px + 0.4vw);
+    /* font-size: calc(14px + 0.4vw); */
+    font-size: min(calc(14px + 0.4vw), 18px);
     font-style: italic;
     margin-top: 10px;
     margin-bottom: 0;
 }
 
+/**************************************/
+/* BLOG NEW / EDIT PAGE */
+/**************************************/
+
+.new-edit-blog-div {
+    height: 100%;
+    background-color: #121212;
+    color: #dfdfdf;
+    /* background-color: #222222; */
+}
+
+.new-edit-blog-div select {
+    /* background-color: #121212; */
+    background-color: #222222;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+}
+
+.new-edit-blog-div input {
+    /* background-color: #121212; */
+    background-color: #222222;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+    color-scheme: dark;
+}
+
+.new-edit-blog-div textarea {
+    /* background-color: #121212; */
+    background-color: #222222;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+}
+
+/**************************************/
+/* BLOG SHOW PAGE */
+/**************************************/
+
+.blog-show-div {
+    background-color: #121212;
+    min-height: 100%;
+}
+
  /* the category - date description above the title of the blog show page */
-.blog-categ-date {
+ .blog-categ-date {
     font-size: 15px;
     /*width: 60%; */
     width: 70%; 
     margin: 10px auto 0 auto;
     padding-bottom: 0;
-    color: gray;
+    /* color: gray; */
+    color: #ababab;
 }
 
 /* the div containing the body */
@@ -634,20 +808,24 @@ body {
     /*width: 60%;*/
     width: 70%;
     margin: 25px auto;
+    color: #a3a3a3;
 }
 
  /* the body/content portion of the blog show page */
 .blog-body {
     margin: 30px 0;
-    font-size: calc(15px + 0.4vw);
+    /* font-size: calc(15px + 0.4vw); */
+    font-size: min(calc(15px + 0.4vw), 20px);
     /*line-height: 35px;*/
-    line-height: calc(20px + 1.1vw);
+    /* line-height: calc(20px + 1.1vw); */
+    line-height: min(calc(20px + 1.1vw), 40px);;
 }
 
  /* gives the paragraphs found inside the .blog-body div have more spaces between the paragraphs */
 .blog-body p {
     /*margin-bottom: 20px;*/
-    margin-bottom: calc(10px + 0.7vw);
+    /* margin-bottom: calc(10px + 0.7vw); */
+    margin-bottom: min(calc(10px + 0.7vw), 30px);
 }
 
  /* preserves the video's proper ratio even as the browser window changes in size. */
@@ -703,7 +881,7 @@ body {
     position: relative;
     color: white;
     top: 35%;
-    font-size: calc(20px + 5.5vw);
+    font-size: min(calc(20px + 5.5vw), 100px);
     line-height: 1em;
 }
 
@@ -725,6 +903,42 @@ body {
     padding: 4em 0;
 }
 
+.contact-body-div {
+    background-color: #121212;
+    min-height: calc(100% - 500px);
+}
+
+.contact-well {
+    background-color: #222222;
+    border: 1px solid #3b3b3b;
+}
+
+.contact-well label {
+    color: #dfdfdf;
+}
+
+.contact-well input {
+    background-color: #121212;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+}
+
+.contact-well textarea {
+    background-color: #121212;
+    border: 1px solid #787878;
+    color: #dfdfdf;
+}
+
+.contact-well .input-group-addon {
+    background-color: #282828;
+    border: 1px solid #787878;
+}
+
+.contact-well .glyphicon-envelope {
+    background-color: #282828;
+    color: #b5b5b5;
+}
+
 /**************************************/
 /* NAV BAR */
 /**************************************/
@@ -736,7 +950,9 @@ body {
 }
 
 .navbar-inverse.solid {
-    background-color: #72a4c9;
+    /* background-color: #72a4c9; */
+    /* background-color: #373e48; */
+    background-color: #424a56;
     border-color: #5982a0;
 }
 
@@ -839,7 +1055,16 @@ body {
     /* also, adds more distance between the intro title text and the intro subtitle text*/
     .intro-text {
         line-height: calc(50px + 0.5vw);
-        margin-bottom: calc(30px + 0.5vw);
+        /* margin-bottom: calc(30px + 0.5vw); */
+    }
+
+    .intro-subtitle {
+        /* position: relative;
+        color: white; */
+        /*top: 32%;*/
+        /* top: calc(32% - 2vw); */
+        top: calc(34.3% - 2vw);
+        font-size: min(calc(18px + 0.95vw), 50px);
     }
     
     .intro-section .intro-to-port-h3 {

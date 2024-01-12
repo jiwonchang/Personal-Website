@@ -1,53 +1,55 @@
 <% include ../partials/header %>
 
 <div class="background-div"></div>
-<div class="container content-beginning">
-    <div class="row">
-        <h1 style="text-align: center;">Create A New Blog Post</h1>
-        
-        <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
-            <form action="/blog" method="POST">
-                <!-- the form-group class divs add spacing between the items in the form -->
-                <div class="form-group">
-                    <select class="form-control" name="blog[category]" type="text" required>
-                        <option value="Thoughts">Thoughts</option>
-                        <option value="Opinion">Opinion</option>
-                        <option value="Life">Life</option>
-                        <option value="Lessons">Lessons</option>
-                        <option value="Advice">Advice</option>
-                        <option value="Food">Food</option>
-                        <option value="Tech">Tech</option>
-                        <option value="Art">Art</option>
-                        <option value="Art">Music</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Thoughts">Random</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[title]" type="text" placeholder="Title of new post" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[image]" type="text" placeholder="Image URL" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[image_desc]" type="text" placeholder="Image description">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="blog[video]" type="text" placeholder="Video URL">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control textarea-lg" name="blog[body]" placeholder="Write something interesting here..." required></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
-                </div>
-            </form>
+<div class="new-edit-blog-div">
+    <div class="container content-beginning">
+        <div class="row">
+            <h1 style="text-align: center;">Create A New Blog Post</h1>
             
-            <a href="/blog">Go Back</a>
+            <div class="fill-out-form" style="width: 30%; margin: 25px auto;">
+                <form action="/blog" method="POST">
+                    <!-- the form-group class divs add spacing between the items in the form -->
+                    <div class="form-group">
+                        <select class="form-control" name="blog[category]" type="text" required>
+                            <option value="Thoughts">Thoughts</option>
+                            <option value="Opinion">Opinion</option>
+                            <option value="Life">Life</option>
+                            <option value="Lessons">Lessons</option>
+                            <option value="Advice">Advice</option>
+                            <option value="Food">Food</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Art">Art</option>
+                            <option value="Art">Music</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Thoughts">Random</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[title]" type="text" placeholder="Title of new post" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[image]" type="text" placeholder="Image URL" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[image_desc]" type="text" placeholder="Image description">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="blog[video]" type="text" placeholder="Video URL">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control textarea-lg" name="blog[body]" placeholder="Write something interesting here..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
+                    </div>
+                </form>
+                
+                <a href="/blog">Go Back</a>
+            </div>
+            
         </div>
         
     </div>
-    
 </div>
 
 <% include ../partials/footer %>

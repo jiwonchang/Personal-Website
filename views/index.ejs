@@ -6,9 +6,16 @@
 	fade-in when scroll-height >= background-div's height.-->
 	<!-- the "background-img" is there to show that this page HAS a background image. -->
     <div class="background parallax background-div background-img">
-        <div class="layer">
-            <div class="intro-text fade-in-text">Hi! I'm <span>Henry Chang.</span></div>
-            <h2 class="intro-subtitle delay-fade-in-text"><!-- Upcoming --> Software Developer, Artist, Dreamer</h2>
+        <div class="intro-text-div layer">
+            <!-- <div class="intro-text fade-in-text">Hi! I'm <span>Henry Chang.</span></div> -->
+            <div class="intro-title-div">
+                <div class="intro-greeting-text fade-in-text">Hey, I'm</div>
+                <div class="intro-text fade-in-text">Henry Chang</div>
+                <h2 class="intro-subtitle delay-fade-in-text">Software Developer, Artist, Dreamer</h2>
+            </div>
+            <!-- <div class="intro-greeting-text fade-in-text">Hey! I'm</div>
+            <div class="intro-text fade-in-text">Henry Chang</div> -->
+            <!-- <h2 class="intro-subtitle delay-fade-in-text">Software Developer, Artist, Dreamer</h2> -->
         </div>
     </div>
 </div>
@@ -34,7 +41,8 @@
             <div class="container">
                 <div class="row eql-hgt">
                     <div class="col-lg-3 col-md-12">
-                        <img class="thumbnail about-pic vert-spaced center-image" src="/images/tux-cropped.jpg">
+                        <!-- <img class="thumbnail about-pic vert-spaced center-image" src="/images/tux-cropped.jpg"> -->
+                        <img class="thumbnail about-pic vert-spaced center-image" src="/images/Osaka_Dotonbori.jpeg">
                     </div>
                     <div class="col-lg-9 col-md-12">
                         <p class="about-text">Hi there! I'm a UC Berkeley grad and a software developer. I majored
@@ -53,7 +61,8 @@
         <div class="col-xs-12 intro-section">
             <h2 class="page-divider strong" style="padding-bottom: 10px">
                 <span>
-                    <strong>My Background</strong>
+                    <!-- <strong>My Background</strong> -->
+                    <strong>My Journey</strong>
                 </span>
             </h2>
             <div class="container">
@@ -83,7 +92,8 @@
                             </ol>
                             <% if (calBlog) { %>
                                 <p>
-                                    You can read more about my journey in UC Berkeley <a href="/blog/<%= calBlog._id %>">here</a>!
+                                    <!-- You can read more about my journey in UC Berkeley <a href="/blog/<%= calBlog._id %>">here</a>! -->
+                                    You can read more about my journey in UC Berkeley <a href="/blog/<%= ucsbBlog._id %>">here</a>!
                                 </p>
                             <% } else { %>
                                 <p>
@@ -118,7 +128,8 @@
                             </ol>
                             <% if (ucsbBlog) { %>
                                 <p>
-                                    You can read more about my journey in UCSB <a href="/blog/<%= ucsbBlog._id %>">here</a>!
+                                    <!-- You can read more about my journey in UCSB <a href="/blog/<%= ucsbBlog._id %>">here</a>! -->
+                                    You can read more about my journey in UCSB <a href="/blog/<%= calBlog._id %>">here</a>!
                                 </p>
                             <% } else { %>
                                 <p>

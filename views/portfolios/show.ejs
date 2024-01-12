@@ -2,30 +2,32 @@
 
 <!-- the "background-div" here is empty, which means that the nav bar will fade-in at the top as soon as we load the page -->
 <div class="background-div"></div>
-<div class="container content-beginning">
-    <div class="row">
-        <!--<a href="/portfolio" class="btn btn-primary">Go Back</a>-->
-        <p class="portfolio-date"><%= portfolio.created.toDateString() %></p>
-        <h1 class="portfolio-title"><%= portfolio.title %></h1>
-        
-        <div class="portfolio-body-div">
-            <img class="portfolio-show-img" src="<%= portfolio.image %>">
-            <div class="portfolio-body"><%- portfolio.body %></div>
-            <% if (currentUser && portfolio.author.id.equals(currentUser._id)) { %>
-                <a class="btn btn-warning" href="/portfolio/<%= portfolio._id %>/edit">Edit</a>
-            <% } %>
-            <!-- triggers the DESTROY Route by sending a DELETE request to "/portfolios/id". -->
-            <!-- Again, we use method-override since HTML does not support DELETE requests by default -->
-            <% if (currentUser && portfolio.author.id.equals(currentUser._id)) { %>
-                <form id="delete" action="/portfolio/<%= portfolio._id %>?_method=DELETE" method="POST" style="display: inline-block;
-                margin-left: 10px">
-                    <button class="btn btn-danger">Delete</button>
-                </form>
-            <% } %>
+<div class="portfolio-show-div">
+    <div class="container content-beginning">
+        <div class="row">
+            <!--<a href="/portfolio" class="btn btn-primary">Go Back</a>-->
+            <p class="portfolio-date"><%= portfolio.created.toDateString() %></p>
+            <h1 class="portfolio-title"><%= portfolio.title %></h1>
+            
+            <div class="portfolio-body-div">
+                <img class="portfolio-show-img" src="<%= portfolio.image %>">
+                <div class="portfolio-body"><%- portfolio.body %></div>
+                <% if (currentUser && portfolio.author.id.equals(currentUser._id)) { %>
+                    <a class="btn btn-warning" href="/portfolio/<%= portfolio._id %>/edit">Edit</a>
+                <% } %>
+                <!-- triggers the DESTROY Route by sending a DELETE request to "/portfolios/id". -->
+                <!-- Again, we use method-override since HTML does not support DELETE requests by default -->
+                <% if (currentUser && portfolio.author.id.equals(currentUser._id)) { %>
+                    <form id="delete" action="/portfolio/<%= portfolio._id %>?_method=DELETE" method="POST" style="display: inline-block;
+                    margin-left: 10px">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                <% } %>
+            </div>
+            
         </div>
         
     </div>
-    
 </div>
 
 <% include ../partials/footer %>
