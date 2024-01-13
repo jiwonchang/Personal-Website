@@ -20,7 +20,7 @@ require("dotenv").config();
 // require models from modules
 var Blog = require("./models/blogs");
 var Portfolio = require("./models/portfolios");
-var User = require("./models/user");
+var User = require("./models/user"); 
 
 // Requiring Routes
 var portfolioRoutes = require("./routes/portfolios"),
