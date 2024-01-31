@@ -1,0 +1,1 @@
+In order to push changes to Heroku, use the command "git push heroku master"
