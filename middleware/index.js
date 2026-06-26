@@ -20,7 +20,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     
     // "returnTo" saves the URL/page the user was at before being asked to log in. After successful log in, redirects to that page.
     req.session.returnTo = req.originalUrl;
-    // console.log(req.session.returnTo); 
+    // console.log(req.session.returnTo);
     
     res.redirect("/login");
 };
