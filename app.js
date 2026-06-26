@@ -1,4 +1,5 @@
-// https://protected-bastion-78480.herokuapp.com/ is the Heroku site
+// OLD: https://protected-bastion-78480.herokuapp.com/ is the Heroku site
+// NEW/LATEST: https://personal-website-heroku-24-350a5176cf73.herokuapp.com/ is the Heroku site
 
 // require installation
 var passportLocalMongoose = require("passport-local-mongoose"),
