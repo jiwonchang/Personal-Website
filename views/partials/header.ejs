@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-        (function () {
-            var STORAGE_KEY = 'theme';
-            var stored = localStorage.getItem(STORAGE_KEY);
-            var theme = stored === 'light' || stored === 'dark' ? stored : null;
-            if (!theme) {
-                theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-            }
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-        </script>
         <link rel="icon" href="/images/favicon-header.ico">
         <title>I'm Henry Chang</title>
         <!-- the text font family from Google Fonts -->
@@ -38,14 +27,7 @@
     <body>
         
         <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
-        <nav class="navbar navbar-fixed-top" id="site-navbar">
-        <script>
-        (function () {
-            var theme = document.documentElement.getAttribute('data-theme');
-            var nav = document.getElementById('site-navbar');
-            nav.classList.add(theme === 'light' ? 'navbar-default' : 'navbar-inverse');
-        })();
-        </script>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
     		<div class="container">
     			<!-- This is how we make a navbar header, in this case for a brand image -->
     			<div class="navbar-header">
@@ -75,11 +57,6 @@
     
     				<!-- Makes a new group of content/links on the right side of the nav bar -->
     				<ul class="nav navbar-nav navbar-right">
-    					<li>
-    						<a href="#" id="theme-toggle" aria-label="Switch to light mode" aria-pressed="true">
-    							<i class="fas fa-sun" aria-hidden="true"></i>
-    						</a>
-    					</li>
     					<li><a href="https://github.com/jiwonchang" target="_blank"><i class="fa fa-github navbar-icon" aria-hidden="true"></i></a></li>
     					<li><a href="https://www.linkedin.com/in/henryjchang/" target="_blank"><i class="fa fa-linkedin-square navbar-icon" aria-hidden="true"></i></a></li>
     				
