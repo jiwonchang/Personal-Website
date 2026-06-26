@@ -1,4 +1,104 @@
 /**************************************/
+/* Theme tokens */
+/**************************************/
+
+:root,
+[data-theme="dark"] {
+    --bg-primary: #121212;
+    --bg-secondary: #292e36;
+    --bg-tertiary: #222222;
+    --bg-input: #121212;
+    --text-primary: #dfdfdf;
+    --text-secondary: #a3a3a3;
+    --text-muted: #8d8d8d;
+    --text-meta: #ababab;
+    --text-section-title: #adadad;
+    --text-section-subtitle: #919191;
+    --text-small: #7c7c7c;
+    --page-divider: #dfdfdf;
+    --border-input: #787878;
+    --border-subtle: #3b3b3b;
+    --navbar-solid: #424a56;
+    --navbar-border: #5982a0;
+    --navbar-text: #e4e4e4;
+    --navbar-text-on-hero: #e4e4e4;
+    --navbar-toggle-border: #72a4c9;
+    --thumbnail-frame: #bac3d1;
+    --skill-pic-bg: #ededed;
+    --input-addon-bg: #282828;
+    --input-addon-icon: #b5b5b5;
+    color-scheme: dark;
+}
+
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f2f5;
+    --bg-tertiary: #ededed;
+    --bg-input: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #555555;
+    --text-muted: #777777;
+    --text-meta: #888888;
+    --text-section-title: #666666;
+    --text-section-subtitle: #888888;
+    --text-small: #666666;
+    --page-divider: #333333;
+    --border-input: #cccccc;
+    --border-subtle: #dddddd;
+    --navbar-solid: #ffffff;
+    --navbar-border: #dddddd;
+    --navbar-text: #333333;
+    --navbar-text-on-hero: #e4e4e4;
+    --navbar-toggle-border: #cccccc;
+    --thumbnail-frame: #d0d7e2;
+    --skill-pic-bg: #ededed;
+    --input-addon-bg: #f5f5f5;
+    --input-addon-icon: #666666;
+    color-scheme: light;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .well {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .well .form-control {
+    background-color: var(--bg-input);
+    border-color: var(--border-input);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .well {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.blog-meta {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .new-edit-portfolio-div input,
+[data-theme="dark"] .new-edit-blog-div input,
+[data-theme="dark"] .contact-well input,
+[data-theme="dark"] .contact-well textarea {
+    color-scheme: dark;
+}
+
+[data-theme="light"] .new-edit-portfolio-div input,
+[data-theme="light"] .new-edit-blog-div input,
+[data-theme="light"] .contact-well input,
+[data-theme="light"] .contact-well textarea {
+    color-scheme: light;
+}
+
+/**************************************/
 /* General */
 /**************************************/
 
@@ -15,6 +115,7 @@ body, html {
 body {
     /*font-family: 'Libre Baskerville', serif;*/
     font-family: 'Open Sans', sans-serif;
+    /* background-color and color set in theme tokens */
 }
 
  /* removes the awkward slight margin at the right of the page that makes the bottom scrollbar appear (caused by the .row element's
@@ -46,7 +147,7 @@ body {
 .page-divider:after {
   /*background-color: #000;*/
   /* background-color: #383838; */
-  background-color: #dfdfdf;
+  background-color: var(--page-divider);
   content: "";
   display: inline-block;
   height: 1px;
@@ -152,8 +253,8 @@ body {
 }
 
 .intro-div {
-    background-color: #121212;
-    color: #dfdfdf;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .intro-text-div {
@@ -212,7 +313,7 @@ body {
 .ind-blue-section {
     /*background-color: #cce2e2;*/
     /* background-color: #e1e7f2; */
-    background-color: #292e36;
+    background-color: var(--bg-secondary);
 }
 
  /* selects the picture in the "About Me" section. */
@@ -231,7 +332,7 @@ body {
     /* sets the background color of the picture's frame/border */
     /*background-color: #97c3c4;*/
     /*background-color: #d0d7e2;*/
-    background-color: #bac3d1;
+    background-color: var(--thumbnail-frame);
 }
 
  /* centers image (duh) */
@@ -295,7 +396,7 @@ body {
 .my-bg-content {
     line-height: 1.6em;
     /* color: #3a3a3a; */
-    color: #dfdfdf;
+    color: var(--text-primary);
 }
 
 .my-skill-pic {
@@ -307,7 +408,7 @@ body {
     width: calc(6em + 3vw);
     height: calc(6em + 3vw);
     margin-top: 30px;
-    background-color: #ededed;
+    background-color: var(--skill-pic-bg);
 }
 
 .my-skill-text {
@@ -333,7 +434,7 @@ body {
 .my-skill-content {
     line-height: 1.6em;
     /* color: #3a3a3a; */
-    color: #dfdfdf;
+    color: var(--text-primary);
 }
 
 /**************************************/
@@ -452,15 +553,15 @@ body {
 }
 
 .portfolio-div {
-    background-color: #121212;
+    background-color: var(--bg-primary);
 }
 
 .portfolio-section-title {
-    color: #adadad;
+    color: var(--text-section-title);
 }
 
 .portfolio-section-subtitle {
-    color: #919191;
+    color: var(--text-section-subtitle);
 }
 
  /* makes it so that the bootstrap columns move onto a new row if the 12 column spaces have been filled, or if the inclusion
@@ -472,12 +573,12 @@ body {
 }
 .small {
     font-size: 18px;
-    color: #7c7c7c;
+    color: var(--text-small);
 }
 
 .portfolio-thumbnail {
-    background-color: #292e36;
-    border: 1px solid #292e36;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-secondary);
 }
 
 .portfolio-thumb-fx {
@@ -497,7 +598,7 @@ body {
 
 .thumbnail .portfolio-thumb-caption {
     /* color: #dfdfdf; */
-    color: #8d8d8d;
+    color: var(--text-muted);
 }
 
 .imageresource {
@@ -574,31 +675,30 @@ body {
 
 .new-edit-portfolio-div {
     height: 100%;
-    background-color: #121212;
-    color: #dfdfdf;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     /* background-color: #222222; */
 }
 
 .new-edit-portfolio-div select {
     /* background-color: #121212; */
-    background-color: #222222;
-    border: 1px solid #787878;
-    color: #dfdfdf;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 .new-edit-portfolio-div input {
     /* background-color: #121212; */
-    background-color: #222222;
-    border: 1px solid #787878;
-    color: #dfdfdf;
-    color-scheme: dark;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 .new-edit-portfolio-div textarea {
     /* background-color: #121212; */
-    background-color: #222222;
-    border: 1px solid #787878;
-    color: #dfdfdf;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 /**************************************/
@@ -606,7 +706,7 @@ body {
 /**************************************/
 
 .portfolio-show-div {
-    background-color: #121212;
+    background-color: var(--bg-primary);
     min-height: 100%;
 }
 
@@ -617,7 +717,7 @@ body {
     margin: 10px auto 0 auto;
     padding-bottom: 0;
     /* color: gray; */
-    color: #ababab;
+    color: var(--text-meta);
 }
 
 .portfolio-title {
@@ -631,7 +731,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    color: #dfdfdf;
+    color: var(--text-primary);
 }
 
 /* the div containing the body */
@@ -639,7 +739,7 @@ body {
     /*width: 60%;*/
     width: 70%;
     margin: 25px auto;
-    color: #a3a3a3;
+    color: var(--text-secondary);
 }
 
 .portfolio-body {
@@ -683,7 +783,7 @@ body {
 }
 
 .blog-div {
-    background-color: #121212;
+    background-color: var(--bg-primary);
 }
 
 .blog-title {
@@ -696,7 +796,7 @@ body {
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    color: #dfdfdf;
+    color: var(--text-primary);
 }
 
 .blog-subtitle {
@@ -710,8 +810,8 @@ body {
 .blog-thumbnail {
     /* background-color: #292e36;
     border: 1px solid #292e36; */
-    background-color: #121212;
-    border: 1px solid #121212;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--bg-primary);
 }
 
 .blog-thumb-fx {
@@ -726,7 +826,12 @@ body {
 }
 
 .thumbnail .blog-thumb-caption {
-    color: #8d8d8d;
+    color: var(--text-muted);
+}
+
+.thumbnail .blog-thumb-caption h3,
+.thumbnail .portfolio-thumb-caption h3 {
+    color: var(--text-primary);
 }
 
 .blog-show-img {
@@ -756,31 +861,30 @@ body {
 
 .new-edit-blog-div {
     height: 100%;
-    background-color: #121212;
-    color: #dfdfdf;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     /* background-color: #222222; */
 }
 
 .new-edit-blog-div select {
     /* background-color: #121212; */
-    background-color: #222222;
-    border: 1px solid #787878;
-    color: #dfdfdf;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 .new-edit-blog-div input {
     /* background-color: #121212; */
-    background-color: #222222;
-    border: 1px solid #787878;
-    color: #dfdfdf;
-    color-scheme: dark;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 .new-edit-blog-div textarea {
     /* background-color: #121212; */
-    background-color: #222222;
-    border: 1px solid #787878;
-    color: #dfdfdf;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 /**************************************/
@@ -788,7 +892,7 @@ body {
 /**************************************/
 
 .blog-show-div {
-    background-color: #121212;
+    background-color: var(--bg-primary);
     min-height: 100%;
 }
 
@@ -800,7 +904,7 @@ body {
     margin: 10px auto 0 auto;
     padding-bottom: 0;
     /* color: gray; */
-    color: #ababab;
+    color: var(--text-meta);
 }
 
 /* the div containing the body */
@@ -808,7 +912,7 @@ body {
     /*width: 60%;*/
     width: 70%;
     margin: 25px auto;
-    color: #a3a3a3;
+    color: var(--text-secondary);
 }
 
  /* the body/content portion of the blog show page */
@@ -904,39 +1008,39 @@ body {
 }
 
 .contact-body-div {
-    background-color: #121212;
+    background-color: var(--bg-primary);
     min-height: calc(100% - 500px);
 }
 
 .contact-well {
-    background-color: #222222;
-    border: 1px solid #3b3b3b;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
 }
 
 .contact-well label {
-    color: #dfdfdf;
+    color: var(--text-primary);
 }
 
 .contact-well input {
-    background-color: #121212;
-    border: 1px solid #787878;
-    color: #dfdfdf;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 .contact-well textarea {
-    background-color: #121212;
-    border: 1px solid #787878;
-    color: #dfdfdf;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-input);
+    color: var(--text-primary);
 }
 
 .contact-well .input-group-addon {
-    background-color: #282828;
-    border: 1px solid #787878;
+    background-color: var(--input-addon-bg);
+    border: 1px solid var(--border-input);
 }
 
 .contact-well .glyphicon-envelope {
-    background-color: #282828;
-    color: #b5b5b5;
+    background-color: var(--input-addon-bg);
+    color: var(--input-addon-icon);
 }
 
 /**************************************/
@@ -949,30 +1053,36 @@ body {
     /*transition: background-color 0.5s ease 0s;*/
 }
 
-.navbar-inverse.solid {
+.navbar-inverse.solid,
+.navbar-default.solid {
     /* background-color: #72a4c9; */
     /* background-color: #373e48; */
-    background-color: #424a56;
-    border-color: #5982a0;
+    background-color: var(--navbar-solid);
+    border-color: var(--navbar-border);
 }
 
-/* main navbar background color and border color */
-/*.navbar-inverse {*/
-/*    background-color: #72a4c9;*/
-    /* the below code renders the navbar transparent... may be useful later... */
-    /* maybe i can use JS to add a class to the navbar to make it transparent until we scroll past a certain point,
-    after which the navbar will become "sticky" and stick to the top of the page */
-/*    border-color: #5982a0;*/
-/*}*/
+[data-theme="light"] .navbar-default:not(.solid) .navbar-brand,
+[data-theme="light"] .navbar-default:not(.solid) .navbar-nav > li > a {
+    color: var(--navbar-text-on-hero);
+}
 
- /* collapsed (hamburger) navbar border-color */
-/*.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {*/
-/*    border-color: #5982a0;*/
-/*}*/
+[data-theme="light"] .navbar-default:not(.solid) .navbar-toggle .icon-bar {
+    background-color: #e4e4e4;
+}
+
+[data-theme="light"] .navbar-default:not(.solid) .navbar-toggle:focus,
+[data-theme="light"] .navbar-default:not(.solid) .navbar-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .navbar-default:not(.solid) .navbar-collapse,
+[data-theme="light"] .navbar-default:not(.solid) .navbar-form {
+    border-color: rgba(255, 255, 255, 0.2);
+}
 
 /* main navbar font color */
 .navbar-inverse .navbar-brand {
-    color: #e4e4e4;
+    color: var(--navbar-text);
     font-size: 20px;
     padding-top: 11px;
     padding-bottom: 0px;
@@ -980,7 +1090,7 @@ body {
 
 /* main navbar brand font color */
 .navbar-inverse .navbar-nav>li>a {
-    color: #e4e4e4;
+    color: var(--navbar-text);
     font-size: 18px;
 }
 
@@ -991,8 +1101,9 @@ body {
 }
 
 /* main navbar collapse (hamburger) icon border-color (gets color once we scroll past a certain point) */
-.navbar-inverse .navbar-toggle.solid {
-    border-color: #72a4c9;
+.navbar-inverse .navbar-toggle.solid,
+.navbar-default .navbar-toggle.solid {
+    border-color: var(--navbar-toggle-border);
 }
 
 .nav-brand {
